@@ -1,33 +1,41 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi&#64;ionicframework.com</ion-note>
-
-          @for (p of appPages; track p; let i = $index) {
+    @if (auth.isLoggedIn()) {
+      <ion-menu contentId="main-content" type="overlay">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Gestión</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-note class="ion-padding">{{ auth.user()?.name }} ({{ auth.user()?.role }})</ion-note>
+          <ion-list lines="none">
             <ion-menu-toggle auto-hide="false">
-              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-                <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
+              <ion-item routerLink="/home" routerLinkActive="selected" button detail="false">
+                <ion-icon slot="start" name="home-outline" aria-hidden="true"></ion-icon>
+                <ion-label>Inicio</ion-label>
               </ion-item>
             </ion-menu-toggle>
-          }
-        </ion-list>
 
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
+            @if (auth.hasRole('admin')) {
+              <ion-menu-toggle auto-hide="false">
+                <ion-item routerLink="/admin" routerLinkActive="selected" button detail="false">
+                  <ion-icon slot="start" name="stats-chart-outline" aria-hidden="true"></ion-icon>
+                  <ion-label>Dashboard</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+            }
 
-          @for (label of labels; track label) {
-            <ion-item lines="none">
-              <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-              <ion-label>{{ label }}</ion-label>
-            </ion-item>
-          }
-        </ion-list>
-      </ion-content>
-    </ion-menu>
+            <ion-menu-toggle auto-hide="false">
+              <ion-item (click)="logout()" button detail="false">
+                <ion-icon slot="start" name="log-out-outline" aria-hidden="true"></ion-icon>
+                <ion-label>Cerrar sesión</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+    }
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
