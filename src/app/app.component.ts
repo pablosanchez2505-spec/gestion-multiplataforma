@@ -1,27 +1,35 @@
-
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink } from '@ionic/angular';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonItem,
+  IonIcon, IonLabel, IonRouterOutlet, IonMenuToggle, IonHeader,
+  IonToolbar, IonTitle, IonNote,
+} from '@ionic/angular';
 import { addIcons } from 'ionicons';
-import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp } from 'ionicons/icons';
+import { homeOutline, statsChartOutline, logOutOutline } from 'ionicons/icons';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  imports: [RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet],
+  imports: [
+    RouterLink, RouterLinkActive,
+    IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonItem,
+    IonIcon, IonLabel, IonRouterOutlet, IonMenuToggle, IonHeader,
+    IonToolbar, IonTitle, IonNote,
+  ],
 })
 export class AppComponent {
-  protected readonly appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
-  ];
-  protected readonly labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  protected readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
+
   constructor() {
-    addIcons({ mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp });
+    addIcons({ homeOutline, statsChartOutline, logOutOutline });
+  }
+
+  logout(): void {
+    this.auth.logout();
+    this.router.navigateByUrl('/login');
   }
 }
