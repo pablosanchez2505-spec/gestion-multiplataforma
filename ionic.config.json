@@ -1,0 +1,7 @@
+{
+  "name": "gestion-multiplataforma",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
