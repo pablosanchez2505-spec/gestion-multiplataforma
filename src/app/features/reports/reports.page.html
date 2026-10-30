@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Informes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  @if (report(); as r) {
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="4">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Productos</ion-card-subtitle>
+              <ion-card-title>{{ r.totalItems }}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12" size-md="4">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Unidades en stock</ion-card-subtitle>
+              <ion-card-title>{{ r.totalStock }}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12" size-md="4">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>Sin stock</ion-card-subtitle>
+              <ion-card-title>{{ r.outOfStock.length }}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Stock por categoría</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          @for (c of r.byCategory | keyvalue; track c.key) {
+            <ion-item>
+              <ion-label>{{ c.key }}</ion-label>
+              <ion-note slot="end">{{ c.value }} uds.</ion-note>
+            </ion-item>
+          }
+        </ion-list>
+        @if (r.outOfStock.length) {
+          <p class="ion-margin-top">Agotados: {{ r.outOfStock.join(', ') }}</p>
+        }
+      </ion-card-content>
+    </ion-card>
+  } @else {
+    <ion-spinner name="crescent"></ion-spinner>
+  }
+</ion-content>

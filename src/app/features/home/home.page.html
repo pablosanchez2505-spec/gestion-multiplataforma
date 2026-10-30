@@ -1,13 +1,92 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Sesión: datos sacados de los claims del JWT -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Sesión iniciada</ion-card-subtitle>
+      <ion-card-title>Hola, {{ auth.user()?.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Rol: <ion-badge>{{ roleLabel() }}</ion-badge> · token válido hasta {{ tokenExpiresAt() }}</p>
+      @for (p of permissionList(); track p) {
+        <ion-chip outline="true"><ion-label>{{ p }}</ion-label></ion-chip>
+      }
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Listado: lo ve cualquiera con items:read -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Productos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      @if (loading()) {
+        <ion-spinner name="crescent"></ion-spinner>
+      } @else {
+        <ion-list>
+          @for (item of items(); track item.id) {
+            <ion-item>
+              <ion-label>
+                <h3>{{ item.name }}</h3>
+                <p>{{ item.category }} · creado por {{ item.createdBy }}</p>
+              </ion-label>
+              <ion-note slot="end" [color]="item.stock === 0 ? 'danger' : 'medium'">{{ item.stock }} uds.</ion-note>
+              <!-- Borrar: solo admin -->
+              <ion-button *appHasRole="'admin'" slot="end" fill="clear" color="danger"
+                          (click)="deleteItem(item.id)" aria-label="Eliminar">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+          } @empty {
+            <ion-item><ion-label>No hay productos.</ion-label></ion-item>
+          }
+        </ion-list>
+      }
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Alta: solo con permiso items:write (supervisor y admin) -->
+  <ion-card *appHasPermission="'items:write'">
+    <ion-card-header>
+      <ion-card-title>Nuevo producto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="newItemForm" (ngSubmit)="addItem()">
+        <ion-input label="Nombre" labelPlacement="floating" fill="outline" formControlName="name"></ion-input>
+        <ion-input label="Categoría" labelPlacement="floating" fill="outline" formControlName="category" class="ion-margin-top"></ion-input>
+        <ion-input label="Stock" labelPlacement="floating" fill="outline" type="number" formControlName="stock" class="ion-margin-top"></ion-input>
+        <ion-button type="submit" expand="block" class="ion-margin-top" [disabled]="newItemForm.invalid">
+          <ion-icon slot="start" name="add-outline"></ion-icon> Añadir
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Herramientas para demostrar guards/interceptores (solo con backend simulado) -->
+  @if (showDemoTools) {
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-subtitle>Pruebas de seguridad</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button size="small" (click)="testRefresh()">
+          <ion-icon slot="start" name="refresh-outline"></ion-icon> Probar 401 → refresh
+        </ion-button>
+        <ion-button size="small" color="warning" (click)="testForbidden()">
+          <ion-icon slot="start" name="warning-outline"></ion-icon> Probar 403 (API admin)
+        </ion-button>
+        @if (demoLog()) {
+          <p><ion-text color="medium"><small>{{ demoLog() }}</small></ion-text></p>
+        }
+      </ion-card-content>
+    </ion-card>
+  }
 </ion-content>

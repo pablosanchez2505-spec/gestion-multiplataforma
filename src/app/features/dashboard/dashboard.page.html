@@ -1,13 +1,37 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>dashboard</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Administración</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">dashboard</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Usuarios, roles y permisos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      @if (loading()) {
+        <ion-spinner name="crescent"></ion-spinner>
+      } @else {
+        <ion-list>
+          @for (u of users(); track u.id) {
+            <ion-item>
+              <ion-label>
+                <h3>{{ u.name }} <ion-badge [color]="roleColor(u.role)">{{ roleLabel(u.role) }}</ion-badge></h3>
+                <p>{{ u.email }}</p>
+                <p>
+                  @for (p of u.permissions; track p) {
+                    <ion-chip outline="true"><ion-label>{{ p }}</ion-label></ion-chip>
+                  }
+                </p>
+              </ion-label>
+            </ion-item>
+          }
+        </ion-list>
+      }
+    </ion-card-content>
+  </ion-card>
 </ion-content>
