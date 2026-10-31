@@ -1,50 +1,59 @@
+import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { provideRouter, Router, RouterLink } from '@angular/router';
+import { provideRouter } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { JwtClaims, Permission, UserRole } from './core/models/user.model';
+import { base64UrlEncode } from './core/utils/jwt.util';
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-      providers: [provideRouter([])]
-    }).compileComponents();
+/** Crea una sesión falsa en localStorage con el rol indicado. */
+function fakeSession(role: UserRole, permissions: Permission[] = []): void {
+  const exp = Math.floor(Date.now() / 1000) + 3600;
+  const claims: JwtClaims = { sub: 1, email: 'x@demo.com', name: 'Test', role, permissions, iat: 0, exp };
+  const jwt = (payload: object) => `h.${base64UrlEncode(JSON.stringify(payload))}.s`;
+  localStorage.setItem('auth_access_token', jwt(claims));
+  localStorage.setItem('auth_refresh_token', jwt({ sub: 1, type: 'refresh', exp }));
+}
+
+async function menuLinks(): Promise<string[]> {
+  await TestBed.configureTestingModule({
+    imports: [AppComponent],
+    providers: [provideRouter([]), provideHttpClient()],
+  }).compileComponents();
+  const fixture = TestBed.createComponent(AppComponent);
+  fixture.detectChanges();
+  await fixture.whenStable();
+  // Se leen los routerLink del menú (el texto de ion-label se hidrata de forma asíncrona en jsdom)
+  const items = fixture.nativeElement.querySelectorAll('ion-menu ion-item[routerLink]') as NodeListOf<HTMLElement>;
+  return Array.from(items).map(i => i.getAttribute('routerLink') ?? '');
+}
+
+describe('AppComponent (menú por rol)', () => {
+  afterEach(() => localStorage.clear());
+
+  it('sin sesión no muestra menú', async () => {
+    expect(await menuLinks()).toEqual([]);
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  it('usuario: no ve Informes ni Administración', async () => {
+    fakeSession('user');
+    const links = await menuLinks();
+    expect(links).toContain('/home');
+    expect(links).not.toContain('/informes');
+    expect(links).not.toContain('/admin');
   });
 
-  it('should have menu labels', async () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    // ion-label is a scoped Stencil component whose slot content is relocated
-    // asynchronously, so wait for hydration before reading textContent (ROU-10799).
-    await fixture.whenStable();
-    const app = fixture.nativeElement;
-    const menuItems = app.querySelectorAll('ion-label');
-    expect(menuItems.length).toEqual(12);
-    expect(menuItems[0].innerHTML).toContain('Inbox');
-    expect(menuItems[1].innerHTML).toContain('Outbox');
+  it('supervisor: ve Informes pero no Administración', async () => {
+    fakeSession('supervisor');
+    const links = await menuLinks();
+    expect(links).toContain('/informes');
+    expect(links).not.toContain('/admin');
   });
 
-  it('should have urls', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const app = fixture.nativeElement;
-    expect(app.querySelectorAll('ion-item').length).toEqual(12);
-    // Ionic applies the rendered href through its own async write queue, so
-    // reading the DOM attribute is flaky (FW-6264). Assert the routerLink
-    // binding directly, which resolves synchronously.
-    const router = TestBed.inject(Router);
-    const links = fixture.debugElement
-      .queryAll(By.directive(RouterLink))
-      .map((el) => el.injector.get(RouterLink));
-    expect(links.length).toEqual(6);
-    expect(router.serializeUrl(links[0].urlTree!)).toEqual('/folder/Inbox');
-    expect(router.serializeUrl(links[1].urlTree!)).toEqual('/folder/Outbox');
+  it('admin: lo ve todo', async () => {
+    fakeSession('admin');
+    const links = await menuLinks();
+    expect(links).toContain('/informes');
+    expect(links).toContain('/admin');
   });
 });

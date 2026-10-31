@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mi perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  @if (profile(); as p) {
+    <ion-list lines="none">
+      <ion-item><ion-label><p>Nombre</p><h2>{{ p.name }}</h2></ion-label></ion-item>
+      <ion-item><ion-label><p>Correo</p><h2>{{ p.email }}</h2></ion-label></ion-item>
+    </ion-list>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <ion-input label="Teléfono" labelPlacement="floating" fill="outline" formControlName="phone"></ion-input>
+    <ion-input label="Departamento" labelPlacement="floating" fill="outline" formControlName="department" class="ion-margin-top"></ion-input>
+
+    @if (form.dirty) {
+      <p><ion-text color="warning"><small>Tienes cambios sin guardar.</small></ion-text></p>
+    }
+
+    <ion-button type="submit" expand="block" class="ion-margin-top" [disabled]="form.invalid || !form.dirty || saving()">
+      Guardar
+    </ion-button>
+  </form>
+</ion-content>
