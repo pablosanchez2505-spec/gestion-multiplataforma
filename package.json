@@ -11,8 +11,8 @@
     "test": "ng test --watch=false",
     "lint": "ng lint",
     "set-env": "node scripts/set-env.mjs",
-    "docs": "compodoc -p tsconfig.app.json -d documentation --disableCoverage",
-    "docs:serve": "compodoc -p tsconfig.app.json -d documentation -s"
+    "docs": "compodoc -p tsconfig.doc.json -d documentation --disableCoverage",
+    "docs:serve": "compodoc -p tsconfig.doc.json -d documentation -s"
   },
   "private": true,
   "dependencies": {
