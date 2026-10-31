@@ -5,6 +5,9 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  @if (returnUrl()) {
+    <p><ion-text color="warning">Inicia sesión para acceder a <strong>{{ returnUrl() }}</strong>.</ion-text></p>
+  }
   <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
 
     <ion-input
@@ -53,4 +56,11 @@
       @if (loading()) { <ion-spinner name="crescent"></ion-spinner> } @else { Entrar }
     </ion-button>
   </form>
+
+  <p class="ion-margin-top"><ion-text color="medium"><small>Usuarios de prueba (pulsa para rellenar el correo):</small></ion-text></p>
+  @for (u of demoUsers; track u.email) {
+    <ion-chip (click)="fillDemo(u.email)">
+      <ion-label>{{ u.label }}</ion-label>
+    </ion-chip>
+  }
 </ion-content>
