@@ -1,0 +1,278 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>gestion-multiplataforma documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">gestion-multiplataforma documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content readme">
+                   <div class="content-data">
+
+
+<h1>Gestión Multiplataforma</h1>
+<p>Aplicación de gestión de productos (PWA / híbrida) hecha con <strong>Ionic 9 + Angular 22</strong> para la actividad individual DI 0488.
+Incluye roles (usuario, supervisor, administrador), guards, interceptores JWT, formularios reactivos con validación asíncrona,
+componentes reutilizables, dos fuentes de datos (API REST simulada + Firestore en tiempo real), dashboard con gráficos,
+exportación a CSV/PDF, accesibilidad y CI/CD.</p>
+<h2>Instalación y uso</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm install
+npm start          # http://localhost:4200
+npm test           # tests unitarios (Vitest)
+npm run lint
+npm run build      # compilación de producción en www/
+npm run docs       # documentación técnica (Compodoc) en documentation/</code></pre></div><h2>Usuarios de prueba (datos sintéticos)</h2>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr><th>Rol</th><th>Correo</th></tr>
+</thead>
+<tbody>
+<tr><td>Administrador</td><td><a href="mailto:admin@demo.com">admin@demo.com</a></td></tr>
+<tr><td>Supervisor</td><td><a href="mailto:supervisor@demo.com">supervisor@demo.com</a></td></tr>
+<tr><td>Usuario</td><td><a href="mailto:usuario@demo.com">usuario@demo.com</a></td></tr>
+</tbody>
+</table>
+<p>Las contraseñas <strong>no</strong> se publican en el repositorio (el backend simulado solo guarda su hash SHA-256).
+Constan en el PDF de entrega. En la pantalla de login, pulsar un usuario rellena el correo.</p>
+<h2>Arquitectura</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">src/app
+├── core/        servicios, guards, interceptores, modelos, store de productos, acceso a datos
+│   ├── data/    ActivityService: Firestore (tiempo real) con respaldo local (Strategy)
+│   ├── mock/    backend REST simulado (interceptor)
+│   └── state/   ItemsStore (signals)
+├── features/    páginas en lazy loading: auth, home, items, reports, dashboard (admin), profile
+└── shared/      componentes reutilizables (stat-card, data-table, chart) y directivas</code></pre></div><ul>
+<li><strong>Roles y permisos:</strong> <code>user &lt; supervisor &lt; admin</code>, con permisos <code>items:read</code>, <code>items:write</code>, <code>reports:read</code>, <code>users:manage</code> incluidos en el JWT.</li>
+<li><strong>Guards:</strong> <code>authGuard</code>, <code>guestGuard</code>, <code>roleGuard</code>, <code>permissionGuard</code> (canMatch) y <code>unsavedChangesGuard</code> (canDeactivate).</li>
+<li><strong>Interceptores:</strong> añaden el token, renuevan con refresh token ante un 401 y redirigen a <code>/forbidden</code> ante un 403.</li>
+<li><strong>Componentes reutilizables (OnPush, <code>input()</code>/<code>output()</code>):</strong> <code>app-stat-card</code>, <code>app-data-table</code>, <code>app-chart</code>.</li>
+<li><strong>Datos:</strong> REST simulado (productos, informes, usuarios) + historial de actividad en Firestore. Sin configuración de Firebase se usa un almacén local sincronizado entre pestañas.</li>
+</ul>
+<h2>Firebase (opcional)</h2>
+<p>No se guardan claves en el repositorio. Para activar Firestore se definen estas variables de entorno antes de compilar:
+<code>FIREBASE_API_KEY</code>, <code>FIREBASE_AUTH_DOMAIN</code>, <code>FIREBASE_PROJECT_ID</code>, <code>FIREBASE_APP_ID</code> y se ejecuta <code>npm run set-env</code>.
+Las reglas están en <code>firestore.rules</code>.</p>
+<h2>Manual de usuario</h2>
+<ol>
+<li><strong>Iniciar sesión</strong> con un usuario de prueba.</li>
+<li><strong>Productos:</strong> buscar, filtrar por categoría, ordenar columnas, paginar y exportar a CSV/PDF. Supervisor y admin pueden crear productos; solo el admin puede eliminarlos.</li>
+<li><strong>Informes</strong> (supervisor/admin): resumen de stock, gráfico por categoría y exportación.</li>
+<li><strong>Administración</strong> (admin): resumen, gráficos, tabla de usuarios y actividad en tiempo real.</li>
+<li><strong>Mi perfil:</strong> editar datos; si hay cambios sin guardar se pide confirmación al salir.</li>
+</ol>
+<h2>Flujo Git (Git Flow)</h2>
+<p><code>main</code> (producción) ← <code>develop</code> ← <code>feature/*</code>. Cada funcionalidad va en su rama y se integra con Pull Request.</p>
+<h2>CI/CD</h2>
+<p><code>.github/workflows/ci.yml</code>: en cada push/PR ejecuta lint, tests y build. El job de <strong>despliegue en Vercel depende del de tests</strong> (<code>needs: test</code>)
+y solo se ejecuta en <code>main</code>: si un test falla no se despliega. Secrets necesarios en GitHub: <code>VERCEL_TOKEN</code>, <code>VERCEL_ORG_ID</code>,
+<code>VERCEL_PROJECT_ID</code> y, opcionalmente, los <code>FIREBASE_*</code>.</p>
+<h2>Accesibilidad y rendimiento</h2>
+<p>Enlace &quot;Saltar al contenido&quot;, foco visible, <code>aria-label</code>/<code>aria-sort</code>/<code>aria-live</code>, tablas semánticas, gráficos con alternativa textual,
+respeto de <code>prefers-reduced-motion</code>, <code>lang=&quot;es&quot;</code>, PWA con service worker y manifiesto. Informe Lighthouse en el PDF de entrega
+(<code>npx lighthouse &lt;url&gt; --view</code>).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'readme';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

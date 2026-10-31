@@ -1,0 +1,1783 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>gestion-multiplataforma documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">gestion-multiplataforma documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#ACCESS_KEY" title="src/app/core/services/auth.service.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>ACCESS_KEY</b>&nbsp;&nbsp;&nbsp;(src/.../auth.service.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#ADMIN_ROUTES" title="src/app/features/admin/admin.routes.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>ADMIN_ROUTES</b>&nbsp;&nbsp;&nbsp;(src/.../admin.routes.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#authErrorInterceptor" title="src/app/core/interceptors/auth-error.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>authErrorInterceptor</b>&nbsp;&nbsp;&nbsp;(src/.../auth-error.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#authInterceptor" title="src/app/core/interceptors/auth.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>authInterceptor</b>&nbsp;&nbsp;&nbsp;(src/.../auth.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#CHANNEL_NAME" title="src/app/core/data/local-activity.store.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>CHANNEL_NAME</b>&nbsp;&nbsp;&nbsp;(src/.../local-activity.store.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#COLLECTION" title="src/app/core/data/firestore-activity.store.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>COLLECTION</b>&nbsp;&nbsp;&nbsp;(src/.../firestore-activity.store.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#environment" title="src/environments/environment.prod.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.prod.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#environment" title="src/environments/environment.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#firebaseConfig" title="src/environments/firebase.config.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>firebaseConfig</b>&nbsp;&nbsp;&nbsp;(src/.../firebase.config.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#interceptors" title="src/main.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>interceptors</b>&nbsp;&nbsp;&nbsp;(src/.../main.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#isError" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>isError</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#ITEMS" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>ITEMS</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#K" title="src/app/core/utils/hash.util.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>K</b>&nbsp;&nbsp;&nbsp;(src/.../hash.util.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#LATENCY_MS" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>LATENCY_MS</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#MAX_EVENTS" title="src/app/core/data/local-activity.store.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>MAX_EVENTS</b>&nbsp;&nbsp;&nbsp;(src/.../local-activity.store.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#MOCK_SIGNATURE" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>MOCK_SIGNATURE</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#mockBackendInterceptor" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>mockBackendInterceptor</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#nextItemId" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>nextItemId</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#now" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>now</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#PALETTE" title="src/app/shared/components/chart/chart.component.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>PALETTE</b>&nbsp;&nbsp;&nbsp;(src/.../chart.component.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#PASSWORD_SALT" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>PASSWORD_SALT</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#permissionGuard" title="src/app/core/guards/role.guard.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>permissionGuard</b>&nbsp;&nbsp;&nbsp;(src/.../role.guard.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#publicUser" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>publicUser</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#REFRESH_KEY" title="src/app/core/services/auth.service.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>REFRESH_KEY</b>&nbsp;&nbsp;&nbsp;(src/.../auth.service.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#RETRIED_AFTER_REFRESH" title="src/app/core/interceptors/http-context.tokens.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>RETRIED_AFTER_REFRESH</b>&nbsp;&nbsp;&nbsp;(src/.../http-context.tokens.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#ROLE_LABEL" title="src/app/core/models/user.model.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>ROLE_LABEL</b>&nbsp;&nbsp;&nbsp;(src/.../user.model.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#ROLE_LEVEL" title="src/app/core/models/user.model.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>ROLE_LEVEL</b>&nbsp;&nbsp;&nbsp;(src/.../user.model.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#ROLE_PERMISSIONS" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>ROLE_PERMISSIONS</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#roleGuard" title="src/app/core/guards/role.guard.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>roleGuard</b>&nbsp;&nbsp;&nbsp;(src/.../role.guard.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#rotr" title="src/app/core/utils/hash.util.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>rotr</b>&nbsp;&nbsp;&nbsp;(src/.../hash.util.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#routes" title="src/app/app.routes.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>routes</b>&nbsp;&nbsp;&nbsp;(src/.../app.routes.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#SKIP_AUTH" title="src/app/core/interceptors/http-context.tokens.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>SKIP_AUTH</b>&nbsp;&nbsp;&nbsp;(src/.../http-context.tokens.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#SKIP_FORBIDDEN_REDIRECT" title="src/app/core/interceptors/http-context.tokens.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>SKIP_FORBIDDEN_REDIRECT</b>&nbsp;&nbsp;&nbsp;(src/.../http-context.tokens.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#STORAGE_KEY" title="src/app/core/data/local-activity.store.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>STORAGE_KEY</b>&nbsp;&nbsp;&nbsp;(src/.../local-activity.store.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#TREND_ICON" title="src/app/shared/components/stat-card/stat-card.component.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>TREND_ICON</b>&nbsp;&nbsp;&nbsp;(src/.../stat-card.component.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#TREND_TEXT" title="src/app/shared/components/stat-card/stat-card.component.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>TREND_TEXT</b>&nbsp;&nbsp;&nbsp;(src/.../stat-card.component.ts)</span></a>
+                        </li>
+                        <li>
+                            <a href="#USERS" title="src/app/core/mock/mock-backend.interceptor.ts" class="reference-link "><span class="reference-badge reference-badge--variable" aria-hidden="true">V</span><span class="reference-link-label"><b>USERS</b>&nbsp;&nbsp;&nbsp;(src/.../mock-backend.interceptor.ts)</span></a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/app/core/services/auth.service.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ACCESS_KEY"></a>
+                    <span class="name">
+                        <span ><b>ACCESS_KEY</b></span>
+                        <a href="#ACCESS_KEY"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auth_access_token&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="REFRESH_KEY"></a>
+                    <span class="name">
+                        <span ><b>REFRESH_KEY</b></span>
+                        <a href="#REFRESH_KEY"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auth_refresh_token&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/features/admin/admin.routes.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ADMIN_ROUTES"></a>
+                    <span class="name">
+                        <span ><b>ADMIN_ROUTES</b></span>
+                        <a href="#ADMIN_ROUTES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.dev/api/router/Routes" target="_blank" >Routes</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    path: &#x27;&#x27;,
+    loadComponent: () &#x3D;&gt; &quot;import(&#x27;../dashboard/dashboard.page&#x27;).then(m &#x3D;&gt; m.DashboardPage)&quot;,
+  },
+]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Rutas hijas de /admin. Este fichero (y todo lo que importa) va en un chunk
+aparte que solo se descarga si canMatch del padre deja pasar (rol admin).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/interceptors/auth-error.interceptor.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authErrorInterceptor"></a>
+                    <span class="name">
+                        <span ><b>authErrorInterceptor</b></span>
+                        <a href="#authErrorInterceptor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.dev/api/common/http/HttpInterceptorFn" target="_blank" >HttpInterceptorFn</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(req, next) &#x3D;&gt; {
+  const auth &#x3D; inject(AuthService);
+  const router &#x3D; inject(Router);
+  const toastCtrl &#x3D; inject(ToastController);
+
+  const notify &#x3D; async (message: string, color: &#x27;warning&#x27; | &#x27;danger&#x27;) &#x3D;&gt; {
+    const toast &#x3D; await toastCtrl.create({ message, color, duration: 2500, position: &#x27;top&#x27; });
+    await toast.present();
+  };
+
+  const expireSession &#x3D; () &#x3D;&gt; {
+    auth.logout(router.url);
+    void notify(&#x27;Tu sesión ha caducado. Vuelve a iniciar sesión.&#x27;, &#x27;warning&#x27;);
+  };
+
+  return next(req).pipe(
+    catchError((error: unknown) &#x3D;&gt; {
+      // Login/refresh gestionan sus propios errores (credenciales incorrectas, etc.)
+      if (!(error instanceof HttpErrorResponse) || req.context.get(SKIP_AUTH)) {
+        return throwError(() &#x3D;&gt; error);
+      }
+
+      if (error.status &#x3D;&#x3D;&#x3D; 401) {
+        // Ya se reintentó con un token recién renovado y sigue fallando → fin de sesión
+        if (req.context.get(RETRIED_AFTER_REFRESH)) {
+          expireSession();
+          return throwError(() &#x3D;&gt; error);
+        }
+        return auth.refreshAccessToken().pipe(
+          switchMap(() &#x3D;&gt; next(markAsRetried(req))),
+          catchError((retryError: unknown) &#x3D;&gt; {
+            // Si el error viene del refresh (no del reintento), cerramos sesión aquí
+            if (!(retryError instanceof HttpErrorResponse) || retryError.url?.includes(&#x27;/auth/refresh&#x27;)) {
+              expireSession();
+            }
+            return throwError(() &#x3D;&gt; retryError);
+          }),
+        );
+      }
+
+      if (error.status &#x3D;&#x3D;&#x3D; 403 &amp;&amp; !req.context.get(SKIP_FORBIDDEN_REDIRECT)) {
+        void notify(&#x27;No tienes permisos para realizar esta acción.&#x27;, &#x27;danger&#x27;);
+        router.navigate([&#x27;/forbidden&#x27;]);
+      }
+
+      return throwError(() &#x3D;&gt; error);
+    }),
+  );
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Interceptor de ERRORES DE SESIÓN (respuesta entrante).
+Va el PRIMERO en la cadena, así al reintentar con next() la petición vuelve
+a pasar por authInterceptor y sale con el token nuevo.</p>
+<p> 401 Unauthorized → token caducado/inválido:
+     1. Pide un access token nuevo con el refresh token (una sola vez).
+     2. Reintenta la petición original.
+     3. Si el refresh falla → cierra sesión y manda al login con returnUrl.
+ 403 Forbidden → autenticado pero sin permiso → pantalla /forbidden.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/interceptors/auth.interceptor.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authInterceptor"></a>
+                    <span class="name">
+                        <span ><b>authInterceptor</b></span>
+                        <a href="#authInterceptor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.dev/api/common/http/HttpInterceptorFn" target="_blank" >HttpInterceptorFn</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(req, next) &#x3D;&gt; {
+  const isApiCall &#x3D; req.url.startsWith(environment.apiUrl);
+  if (!isApiCall || req.context.get(SKIP_AUTH)) {
+    return next(req);
+  }
+
+  const token &#x3D; inject(AuthService).getAccessToken();
+  if (!token) {
+    return next(req);
+  }
+
+  return next(req.clone({ setHeaders: { Authorization: &#x60;Bearer ${token}&#x60; } }));
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Interceptor de AUTENTICACIÓN (petición saliente).
+Añade <code>Authorization: Bearer &lt;token&gt;</code> a todas las llamadas a nuestra API.</p>
+<ul>
+<li>No toca peticiones a terceros (no filtramos el token a otros dominios).</li>
+<li>No toca login/refresh (marcadas con SKIP_AUTH).
+Los servicios de datos no saben nada de tokens: solo hacen http.get(...).</li>
+</ul>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/data/local-activity.store.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CHANNEL_NAME"></a>
+                    <span class="name">
+                        <span ><b>CHANNEL_NAME</b></span>
+                        <a href="#CHANNEL_NAME"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;gm-activity&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MAX_EVENTS"></a>
+                    <span class="name">
+                        <span ><b>MAX_EVENTS</b></span>
+                        <a href="#MAX_EVENTS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>50</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="STORAGE_KEY"></a>
+                    <span class="name">
+                        <span ><b>STORAGE_KEY</b></span>
+                        <a href="#STORAGE_KEY"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;gm_activity&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/data/firestore-activity.store.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="COLLECTION"></a>
+                    <span class="name">
+                        <span ><b>COLLECTION</b></span>
+                        <a href="#COLLECTION"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;activity&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/environments/environment.prod.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="environment"></a>
+                    <span class="name">
+                        <span ><b>environment</b></span>
+                        <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  production: true,
+  apiUrl: &#x27;/api&#x27;,
+  // Se mantiene el backend simulado también en el despliegue (Vercel) porque
+  // el proyecto todavía no tiene API real. Al conectar una API, poner a false.
+  useMockBackend: true,
+  firebase: firebaseConfig,
+  accessTokenTtlSeconds: 120,
+  refreshTokenTtlSeconds: 60 * 60 * 24,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/environments/environment.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="environment"></a>
+                    <span class="name">
+                        <span ><b>environment</b></span>
+                        <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  production: false,
+  /** Prefijo de la API. El interceptor de auth solo añade el token a estas URLs. */
+  apiUrl: &#x27;/api&#x27;,
+  /**
+   * Sin backend real: un interceptor (mockBackendInterceptor) simula la API,
+   * firma tokens, valida el Bearer y devuelve 401/403 como lo haría un servidor.
+   */
+  useMockBackend: true,
+  /** Segunda fuente de datos (NoSQL en tiempo real). Vacío &#x3D; almacén local. */
+  firebase: firebaseConfig,
+  /** Vida del access token en el backend simulado (corta para probar el refresh). */
+  accessTokenTtlSeconds: 120,
+  refreshTokenTtlSeconds: 60 * 60 * 24,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/environments/firebase.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="firebaseConfig"></a>
+                    <span class="name">
+                        <span ><b>firebaseConfig</b></span>
+                        <a href="#firebaseConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/FirebaseConfig.html" target="_self" >FirebaseConfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  apiKey: &#x27;&#x27;,
+  authDomain: &#x27;&#x27;,
+  projectId: &#x27;&#x27;,
+  appId: &#x27;&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/main.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="interceptors"></a>
+                    <span class="name">
+                        <span ><b>interceptors</b></span>
+                        <a href="#interceptors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HttpInterceptorFn[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[authErrorInterceptor, authInterceptor]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cadena de interceptores (el orden importa):
+  petición  →  authErrorInterceptor → authInterceptor → [mockBackend | red]
+  respuesta ←  authErrorInterceptor ← authInterceptor ← [mockBackend | red]</p>
+<ol>
+<li>authErrorInterceptor va primero para que, al reintentar tras el refresh,
+la petición vuelva a pasar por authInterceptor y salga con el token nuevo.</li>
+<li>authInterceptor añade el Bearer.</li>
+<li>mockBackendInterceptor (solo sin API real) hace de servidor.</li>
+</ol>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/mock/mock-backend.interceptor.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isError"></a>
+                    <span class="name">
+                        <span ><b>isError</b></span>
+                        <a href="#isError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(x: JwtClaims | Observable&lt;never&gt;): x is Observable&lt;never&gt; &#x3D;&gt; x instanceof Observable</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ITEMS"></a>
+                    <span class="name">
+                        <span ><b>ITEMS</b></span>
+                        <a href="#ITEMS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Item.html" target="_self" >Item[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  { id: 1, name: &#x27;Portátil 14&quot;&#x27;, category: &#x27;Informática&#x27;, stock: 12, createdBy: &#x27;Admin Demo&#x27; },
+  { id: 2, name: &#x27;Monitor 27&quot;&#x27;, category: &#x27;Informática&#x27;, stock: 3, createdBy: &#x27;Supervisor Demo&#x27; },
+  { id: 3, name: &#x27;Silla ergonómica&#x27;, category: &#x27;Mobiliario&#x27;, stock: 8, createdBy: &#x27;Admin Demo&#x27; },
+  { id: 4, name: &#x27;Teclado mecánico&#x27;, category: &#x27;Periféricos&#x27;, stock: 0, createdBy: &#x27;Supervisor Demo&#x27; },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LATENCY_MS"></a>
+                    <span class="name">
+                        <span ><b>LATENCY_MS</b></span>
+                        <a href="#LATENCY_MS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>300</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MOCK_SIGNATURE"></a>
+                    <span class="name">
+                        <span ><b>MOCK_SIGNATURE</b></span>
+                        <a href="#MOCK_SIGNATURE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>base64UrlEncode(&#x27;firma-simulada-solo-desarrollo&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mockBackendInterceptor"></a>
+                    <span class="name">
+                        <span ><b>mockBackendInterceptor</b></span>
+                        <a href="#mockBackendInterceptor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.dev/api/common/http/HttpInterceptorFn" target="_blank" >HttpInterceptorFn</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(req, next) &#x3D;&gt; {
+  if (!req.url.startsWith(environment.apiUrl)) return next(req);
+
+  const path &#x3D; req.url.slice(environment.apiUrl.length).split(&#x27;?&#x27;)[0];
+  const body &#x3D; (req.body ?? {}) as Record&lt;string, unknown&gt;;
+
+  // POST /auth/login
+  if (req.method &#x3D;&#x3D;&#x3D; &#x27;POST&#x27; &amp;&amp; path &#x3D;&#x3D;&#x3D; &#x27;/auth/login&#x27;) {
+    return from(sha256Hex(PASSWORD_SALT + String(body[&#x27;password&#x27;] ?? &#x27;&#x27;))).pipe(
+      mergeMap(hash &#x3D;&gt; {
+        const user &#x3D; USERS.find(u &#x3D;&gt; u.email &#x3D;&#x3D;&#x3D; body[&#x27;email&#x27;] &amp;&amp; u.passwordHash &#x3D;&#x3D;&#x3D; hash);
+        if (!user) return fail(req, 401, &#x27;Credenciales incorrectas&#x27;);
+        const response: LoginResponse &#x3D; { ...issueTokens(user), user: publicUser(user) };
+        return ok(response);
+      }),
+    );
+  }
+
+  // POST /auth/refresh
+  if (req.method &#x3D;&#x3D;&#x3D; &#x27;POST&#x27; &amp;&amp; path &#x3D;&#x3D;&#x3D; &#x27;/auth/refresh&#x27;) {
+    const claims &#x3D; verify&lt;{ sub: number; type: string; exp: number }&gt;(body[&#x27;refreshToken&#x27;] as string);
+    const user &#x3D; claims?.type &#x3D;&#x3D;&#x3D; &#x27;refresh&#x27; ? USERS.find(u &#x3D;&gt; u.id &#x3D;&#x3D;&#x3D; claims.sub) : undefined;
+    if (!user) return fail(req, 401, &#x27;Refresh token inválido o caducado&#x27;);
+    return ok(issueTokens(user)); // rotación: también se emite un refresh token nuevo
+  }
+
+  // GET /items/exists?name&#x3D;...  (comprobación para el validador asíncrono del alta)
+  if (req.method &#x3D;&#x3D;&#x3D; &#x27;GET&#x27; &amp;&amp; path &#x3D;&#x3D;&#x3D; &#x27;/items/exists&#x27;) {
+    const auth &#x3D; authorize(req, &#x27;items:read&#x27;);
+    if (isError(auth)) return auth;
+    const name &#x3D; (req.params.get(&#x27;name&#x27;) ?? &#x27;&#x27;).trim().toLowerCase();
+    return ok({ exists: ITEMS.some(i &#x3D;&gt; i.name.trim().toLowerCase() &#x3D;&#x3D;&#x3D; name) });
+  }
+
+  // GET /items
+  if (req.method &#x3D;&#x3D;&#x3D; &#x27;GET&#x27; &amp;&amp; path &#x3D;&#x3D;&#x3D; &#x27;/items&#x27;) {
+    const auth &#x3D; authorize(req, &#x27;items:read&#x27;);
+    if (isError(auth)) return auth;
+    return ok([...ITEMS]);
+  }
+
+  // POST /items
+  if (req.method &#x3D;&#x3D;&#x3D; &#x27;POST&#x27; &amp;&amp; path &#x3D;&#x3D;&#x3D; &#x27;/items&#x27;) {
+    const auth &#x3D; authorize(req, &#x27;items:write&#x27;);
+    if (isError(auth)) return auth;
+    const name &#x3D; String(body[&#x27;name&#x27;] ?? &#x27;&#x27;).trim();
+    if (!name) return fail(req, 400, &#x27;El nombre es obligatorio&#x27;);
+    // El servidor vuelve a comprobarlo: la validación del cliente nunca es suficiente
+    if (ITEMS.some(i &#x3D;&gt; i.name.trim().toLowerCase() &#x3D;&#x3D;&#x3D; name.toLowerCase())) {
+      return fail(req, 400, &#x27;Ya existe un producto con ese nombre&#x27;);
+    }
+    const item: Item &#x3D; {
+      id: nextItemId++, name,
+      category: String(body[&#x27;category&#x27;] ?? &#x27;General&#x27;),
+      stock: Number(body[&#x27;stock&#x27;] ?? 0),
+      createdBy: auth.name,
+    };
+    ITEMS.push(item);
+    return ok(item);
+  }
+
+  // DELETE /items/:id  (solo administradores)
+  const deleteMatch &#x3D; /^\/items\/(\d+)$/.exec(path);
+  if (req.method &#x3D;&#x3D;&#x3D; &#x27;DELETE&#x27; &amp;&amp; deleteMatch) {
+    const auth &#x3D; authorize(req, &#x27;users:manage&#x27;);
+    if (isError(auth)) return auth;
+    const index &#x3D; ITEMS.findIndex(i &#x3D;&gt; i.id &#x3D;&#x3D;&#x3D; Number(deleteMatch[1]));
+    if (index &#x3D;&#x3D;&#x3D; -1) return fail(req, 404, &#x27;No existe&#x27;);
+    ITEMS.splice(index, 1);
+    return ok({ deleted: true });
+  }
+
+  // GET /reports
+  if (req.method &#x3D;&#x3D;&#x3D; &#x27;GET&#x27; &amp;&amp; path &#x3D;&#x3D;&#x3D; &#x27;/reports&#x27;) {
+    const auth &#x3D; authorize(req, &#x27;reports:read&#x27;);
+    if (isError(auth)) return auth;
+    const byCategory &#x3D; ITEMS.reduce&lt;Record&lt;string, number&gt;&gt;((acc, i) &#x3D;&gt; {
+      acc[i.category] &#x3D; (acc[i.category] ?? 0) + i.stock;
+      return acc;
+    }, {});
+    return ok({
+      totalItems: ITEMS.length,
+      totalStock: ITEMS.reduce((s, i) &#x3D;&gt; s + i.stock, 0),
+      outOfStock: ITEMS.filter(i &#x3D;&gt; i.stock &#x3D;&#x3D;&#x3D; 0).map(i &#x3D;&gt; i.name),
+      byCategory,
+    });
+  }
+
+  // GET /admin/users
+  if (req.method &#x3D;&#x3D;&#x3D; &#x27;GET&#x27; &amp;&amp; path &#x3D;&#x3D;&#x3D; &#x27;/admin/users&#x27;) {
+    const auth &#x3D; authorize(req, &#x27;users:manage&#x27;);
+    if (isError(auth)) return auth;
+    return ok(USERS.map(u &#x3D;&gt; ({ ...publicUser(u), permissions: ROLE_PERMISSIONS[u.role] })));
+  }
+
+  // GET /profile  ·  PUT /profile
+  if (path &#x3D;&#x3D;&#x3D; &#x27;/profile&#x27; &amp;&amp; (req.method &#x3D;&#x3D;&#x3D; &#x27;GET&#x27; || req.method &#x3D;&#x3D;&#x3D; &#x27;PUT&#x27;)) {
+    const auth &#x3D; authorize(req);
+    if (isError(auth)) return auth;
+    const user &#x3D; USERS.find(u &#x3D;&gt; u.id &#x3D;&#x3D;&#x3D; auth.sub);
+    if (!user) return fail(req, 404, &#x27;Usuario no encontrado&#x27;);
+    if (req.method &#x3D;&#x3D;&#x3D; &#x27;PUT&#x27;) {
+      user.phone &#x3D; String(body[&#x27;phone&#x27;] ?? user.phone);
+      user.department &#x3D; String(body[&#x27;department&#x27;] ?? user.department);
+    }
+    return ok({ name: user.name, email: user.email, phone: user.phone, department: user.department });
+  }
+
+  return fail(req, 404, &#x60;Ruta no encontrada: ${req.method} ${path}&#x60;);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nextItemId"></a>
+                    <span class="name">
+                        <span ><b>nextItemId</b></span>
+                        <a href="#nextItemId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>5</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="now"></a>
+                    <span class="name">
+                        <span ><b>now</b></span>
+                        <a href="#now"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; Math.floor(Date.now() / 1000)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PASSWORD_SALT"></a>
+                    <span class="name">
+                        <span ><b>PASSWORD_SALT</b></span>
+                        <a href="#PASSWORD_SALT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;gestion-multiplataforma:&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Las contraseñas NO están en el código: solo su hash SHA-256 (con sal).
+Es lo que haría un servidor real con su base de datos. Las contraseñas de
+prueba se entregan aparte (documento de entrega), nunca en el repositorio.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="publicUser"></a>
+                    <span class="name">
+                        <span ><b>publicUser</b></span>
+                        <a href="#publicUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>({ passwordHash: _p, phone: _ph, department: _d, ...user }: MockUser): User &#x3D;&gt; user</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLE_PERMISSIONS"></a>
+                    <span class="name">
+                        <span ><b>ROLE_PERMISSIONS</b></span>
+                        <a href="#ROLE_PERMISSIONS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >Record&lt;UserRole, Permission[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  user: [&#x27;items:read&#x27;],
+  supervisor: [&#x27;items:read&#x27;, &#x27;items:write&#x27;, &#x27;reports:read&#x27;],
+  admin: [&#x27;items:read&#x27;, &#x27;items:write&#x27;, &#x27;reports:read&#x27;, &#x27;users:manage&#x27;],
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Matriz rol → permisos (acumulativa: cada rol incluye los del inferior).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USERS"></a>
+                    <span class="name">
+                        <span ><b>USERS</b></span>
+                        <a href="#USERS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MockUser[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  { id: 1, email: &#x27;admin@demo.com&#x27;, name: &#x27;Admin Demo&#x27;, role: &#x27;admin&#x27;, passwordHash: &#x27;2f32bb60fe91232e05184836a10cc1abc0a2d43e9ce2d215d9f30823968152cf&#x27;, phone: &#x27;600 000 001&#x27;, department: &#x27;Dirección&#x27; },
+  { id: 2, email: &#x27;supervisor@demo.com&#x27;, name: &#x27;Supervisor Demo&#x27;, role: &#x27;supervisor&#x27;, passwordHash: &#x27;0c13463223a0445fe65a0abb757815dd170904cb39497e36e2c4bb6cd1789a29&#x27;, phone: &#x27;600 000 002&#x27;, department: &#x27;Almacén&#x27; },
+  { id: 3, email: &#x27;usuario@demo.com&#x27;, name: &#x27;Usuario Demo&#x27;, role: &#x27;user&#x27;, passwordHash: &#x27;6c3a6aa78120bac5ee6329093fad7d25416dc26b995ab619463bb32be1795d58&#x27;, phone: &#x27;600 000 003&#x27;, department: &#x27;Ventas&#x27; },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/utils/hash.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="K"></a>
+                    <span class="name">
+                        <span ><b>K</b></span>
+                        <a href="#K"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+  0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+  0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+  0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+  0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+  0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+  0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+  0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
+]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Utilidades de hash (SHA-256) para no guardar contraseñas en texto plano.</p>
+<p>Usa la API nativa <code>crypto.subtle</code>, que el navegador solo ofrece en contextos
+seguros (https o localhost). Si no está disponible (por ejemplo al probar la
+app desde el móvil por http en la red local) se usa una implementación
+en JavaScript puro, que da exactamente el mismo resultado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rotr"></a>
+                    <span class="name">
+                        <span ><b>rotr</b></span>
+                        <a href="#rotr"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(x: number, n: number): number &#x3D;&gt; (x &gt;&gt;&gt; n) | (x &lt;&lt; (32 - n))</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/shared/components/chart/chart.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="PALETTE"></a>
+                    <span class="name">
+                        <span ><b>PALETTE</b></span>
+                        <a href="#PALETTE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;#2563eb&#x27;, &#x27;#16a34a&#x27;, &#x27;#d97706&#x27;, &#x27;#dc2626&#x27;, &#x27;#7c3aed&#x27;, &#x27;#0891b2&#x27;, &#x27;#be185d&#x27;, &#x27;#4d7c0f&#x27;]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Paleta con buen contraste y distinguible para daltonismo.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/guards/role.guard.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="permissionGuard"></a>
+                    <span class="name">
+                        <span ><b>permissionGuard</b></span>
+                        <a href="#permissionGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(...required: Permission[]): CanMatchFn &#x3D;&gt; () &#x3D;&gt; {
+  const auth &#x3D; inject(AuthService);
+  return auth.hasPermission(...required) ? true : inject(Router).createUrlTree([&#x27;/forbidden&#x27;]);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Variante por permiso concreto (más fina que el rol).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="roleGuard"></a>
+                    <span class="name">
+                        <span ><b>roleGuard</b></span>
+                        <a href="#roleGuard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(...allowed: UserRole[]): CanMatchFn &#x3D;&gt; () &#x3D;&gt; {
+  const auth &#x3D; inject(AuthService);
+  return auth.hasRole(...allowed) ? true : inject(Router).createUrlTree([&#x27;/forbidden&#x27;]);
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Guard de AUTORIZACIÓN por rol (factory: recibe los roles permitidos).
+Se usa en canMatch y SIEMPRE después de authMatchGuard (primero ¿quién eres?,
+después ¿qué puedes hacer?).</p>
+<p>  canMatch: [authMatchGuard, roleGuard(&#39;admin&#39;, &#39;supervisor&#39;)]</p>
+<p>Sin el rol → /forbidden (el usuario está identificado, pero no autorizado).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/interceptors/http-context.tokens.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RETRIED_AFTER_REFRESH"></a>
+                    <span class="name">
+                        <span ><b>RETRIED_AFTER_REFRESH</b></span>
+                        <a href="#RETRIED_AFTER_REFRESH"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new HttpContextToken&lt;boolean&gt;(() &#x3D;&gt; false)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Marca una petición ya reintentada tras un refresh, para evitar bucles 401 → refresh → 401.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SKIP_AUTH"></a>
+                    <span class="name">
+                        <span ><b>SKIP_AUTH</b></span>
+                        <a href="#SKIP_AUTH"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new HttpContextToken&lt;boolean&gt;(() &#x3D;&gt; false)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Marca peticiones que NO deben llevar Authorization (login, refresh).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SKIP_FORBIDDEN_REDIRECT"></a>
+                    <span class="name">
+                        <span ><b>SKIP_FORBIDDEN_REDIRECT</b></span>
+                        <a href="#SKIP_FORBIDDEN_REDIRECT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new HttpContextToken&lt;boolean&gt;(() &#x3D;&gt; false)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Permite a un componente gestionar él mismo un 403 sin que el interceptor redirija.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/core/models/user.model.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLE_LABEL"></a>
+                    <span class="name">
+                        <span ><b>ROLE_LABEL</b></span>
+                        <a href="#ROLE_LABEL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >Record&lt;UserRole, string&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  user: &#x27;Usuario&#x27;,
+  supervisor: &#x27;Supervisor&#x27;,
+  admin: &#x27;Administrador&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLE_LEVEL"></a>
+                    <span class="name">
+                        <span ><b>ROLE_LEVEL</b></span>
+                        <a href="#ROLE_LEVEL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >Record&lt;UserRole, number&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  user: 1,
+  supervisor: 2,
+  admin: 3,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Jerarquía: un rol hereda todo lo que tienen los roles de nivel inferior.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/app.routes.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routes"></a>
+                    <span class="name">
+                        <span ><b>routes</b></span>
+                        <a href="#routes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.dev/api/router/Routes" target="_blank" >Routes</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    path: &#x27;login&#x27;,
+    canActivate: [guestGuard],
+    loadComponent: () &#x3D;&gt; &quot;import(&#x27;./features/auth/login/login.page&#x27;).then(m &#x3D;&gt; m.LoginPage)&quot;,
+  },
+  {
+    path: &#x27;home&#x27;,
+    canActivate: [authGuard],
+    loadComponent: () &#x3D;&gt; &quot;import(&#x27;./features/home/home.page&#x27;).then(m &#x3D;&gt; m.HomePage)&quot;,
+  },
+  {
+    path: &#x27;productos&#x27;,
+    canActivate: [authGuard],
+    loadComponent: () &#x3D;&gt; &quot;import(&#x27;./features/items/items.page&#x27;).then(m &#x3D;&gt; m.ItemsPage)&quot;,
+  },
+  {
+    path: &#x27;productos/nuevo&#x27;,
+    canMatch: [authMatchGuard, &quot;permissionGuard(&#x27;items:write&#x27;)&quot;],
+    canDeactivate: [unsavedChangesGuard],
+    loadComponent: () &#x3D;&gt; &quot;import(&#x27;./features/items/item-form.page&#x27;).then(m &#x3D;&gt; m.ItemFormPage)&quot;,
+  },
+  {
+    path: &#x27;perfil&#x27;,
+    canActivate: [authGuard],
+    canDeactivate: [unsavedChangesGuard],
+    loadComponent: () &#x3D;&gt; &quot;import(&#x27;./features/profile/profile.page&#x27;).then(m &#x3D;&gt; m.ProfilePage)&quot;,
+  },
+  {
+    // canMatch: si no es supervisor/admin el chunk de informes no se descarga
+    path: &#x27;informes&#x27;,
+    canMatch: [authMatchGuard, &quot;roleGuard(&#x27;supervisor&#x27;, &#x27;admin&#x27;)&quot;],
+    loadComponent: () &#x3D;&gt; &quot;import(&#x27;./features/reports/reports.page&#x27;).then(m &#x3D;&gt; m.ReportsPage)&quot;,
+  },
+  {
+    // Zona de administración completa cargada en lazy con sus propias rutas hijas
+    path: &#x27;admin&#x27;,
+    canMatch: [authMatchGuard, &quot;roleGuard(&#x27;admin&#x27;)&quot;],
+    loadChildren: () &#x3D;&gt; &quot;import(&#x27;./features/admin/admin.routes&#x27;).then(m &#x3D;&gt; m.ADMIN_ROUTES)&quot;,
+  },
+  {
+    path: &#x27;forbidden&#x27;,
+    loadComponent: () &#x3D;&gt; &quot;import(&#x27;./features/forbidden/forbidden.page&#x27;).then(m &#x3D;&gt; m.ForbiddenPage)&quot;,
+  },
+  { path: &#x27;&#x27;, redirectTo: &#x27;home&#x27;, pathMatch: &#x27;full&#x27; },
+  { path: &#x27;**&#x27;, redirectTo: &#x27;home&#x27; },
+]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mapa de acceso
+───────────────────────────────────────────────────────────────────────────
+ Ruta        Guards                                   user  superv. admin
+ /login      canActivate guest                         (solo sin sesión)
+ /home       canActivate auth                           ✔     ✔      ✔
+ /perfil     canActivate auth + canDeactivate cambios   ✔     ✔      ✔
+ /productos   canActivate auth                           ✔     ✔      ✔
+ /productos/nuevo canMatch permiso items:write + canDeactivate   ✘/✔
+ /informes   canMatch auth + rol(supervisor, admin)     ✘     ✔      ✔
+ /admin/**   canMatch auth + rol(admin)                 ✘     ✘      ✔
+ /forbidden  pública (destino de los 403)</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/shared/components/stat-card/stat-card.component.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TREND_ICON"></a>
+                    <span class="name">
+                        <span ><b>TREND_ICON</b></span>
+                        <a href="#TREND_ICON"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#StatTrend" target="_self" >Record&lt;StatTrend, string&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  up: &#x27;trending-up-outline&#x27;,
+  down: &#x27;trending-down-outline&#x27;,
+  flat: &#x27;remove-outline&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TREND_TEXT"></a>
+                    <span class="name">
+                        <span ><b>TREND_TEXT</b></span>
+                        <a href="#TREND_TEXT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#StatTrend" target="_self" >Record&lt;StatTrend, string&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ up: &#x27;sube&#x27;, down: &#x27;baja&#x27;, flat: &#x27;estable&#x27; }</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
