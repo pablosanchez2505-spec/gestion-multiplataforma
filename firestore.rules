@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Historial de actividad: lectura y alta con datos válidos; sin editar ni borrar
+    match /activity/{id} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasOnly(['type', 'actor', 'detail', 'at'])
+                    && request.resource.data.type in ['login', 'item_created', 'item_deleted']
+                    && request.resource.data.actor is string && request.resource.data.actor.size() <= 80
+                    && request.resource.data.detail is string && request.resource.data.detail.size() <= 200;
+      allow update, delete: if false;
+    }
+  }
+}

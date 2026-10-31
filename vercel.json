@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run set-env && npm run build",
+  "outputDirectory": "www",
+  "rewrites": [{ "source": "/((?!ngsw|assets|.*\\..*).*)", "destination": "/index.html" }],
+  "headers": [
+    { "source": "/ngsw-worker.js", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+  ]
+}
