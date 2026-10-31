@@ -5,6 +5,12 @@ Incluye roles (usuario, supervisor, administrador), guards, interceptores JWT, f
 componentes reutilizables, dos fuentes de datos (API REST simulada + Firestore en tiempo real), dashboard con gráficos,
 exportación a CSV/PDF, accesibilidad y CI/CD.
 
+## Enlaces
+
+- Repositorio: https://github.com/pablosanchez2505-spec/gestion-multiplataforma
+- Producción (Vercel): https://gestion-multiplataforma.vercel.app
+- Documentación técnica (Compodoc): https://pablosanchez2505-spec.github.io/gestion-multiplataforma/
+
 ## Instalación y uso
 
 ```bash
@@ -13,7 +19,7 @@ npm start          # http://localhost:4200
 npm test           # tests unitarios (Vitest)
 npm run lint
 npm run build      # compilación de producción en www/
-npm run docs       # documentación técnica (Compodoc) en documentation/
+npm run docs       # documentación técnica (Compodoc) en docs/ (se publica con GitHub Pages)
 ```
 
 ## Usuarios de prueba (datos sintéticos)
@@ -49,7 +55,8 @@ src/app
 
 No se guardan claves en el repositorio. Para activar Firestore se definen estas variables de entorno antes de compilar:
 `FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, `FIREBASE_PROJECT_ID`, `FIREBASE_APP_ID` y se ejecuta `npm run set-env`.
-Las reglas están en `firestore.rules`.
+Las reglas están en `firestore.rules`. En Vercel las mismas cuatro variables se añaden en Settings > Environment Variables
+(el `buildCommand` de `vercel.json` ejecuta `npm run set-env` antes de compilar).
 
 ## Manual de usuario
 
