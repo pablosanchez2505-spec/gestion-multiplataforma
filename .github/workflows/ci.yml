@@ -36,13 +36,24 @@ jobs:
       FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
       FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
     steps:
+      - name: Comprobar si hay token de Vercel
+        id: check
+        run: |
+          if [ -n "$VERCEL_TOKEN" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"; else echo "::warning::Falta el secret VERCEL_TOKEN: se omite el despliegue"; fi
       - uses: actions/checkout@v4
+        if: steps.check.outputs.ready == 'true'
       - uses: actions/setup-node@v4
+        if: steps.check.outputs.ready == 'true'
         with:
           node-version: 22
           cache: npm
       - run: npm ci
+        if: steps.check.outputs.ready == 'true'
       - run: npm run set-env
+        if: steps.check.outputs.ready == 'true'
       - run: npx vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+        if: steps.check.outputs.ready == 'true'
       - run: npx vercel build --prod --token=$VERCEL_TOKEN
+        if: steps.check.outputs.ready == 'true'
       - run: npx vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+        if: steps.check.outputs.ready == 'true'
