@@ -1,0 +1,1530 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>gestion-multiplataforma documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">gestion-multiplataforma documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HomePage</li>
+</ol>
+
+<div class="io-file io-file-path" data-compodoc="entity-file-path">
+    <span class="icon ion-ios-document" aria-hidden="true"></span>
+    <code>src/app/features/home/home.page.ts</code>
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#api" class="nav-link"
+                role="tab" id="api-tab" data-bs-toggle="tab" data-link="api">API</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-home</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                        <div>        <code><a href="https://angular.dev/api/forms/ReactiveFormsModule" target="_blank" >ReactiveFormsModule</a></code>
+</div>
+                        <div>        <code><a href="../directives/HasRoleDirective.html" target="_self" >HasRoleDirective</a></code>
+</div>
+                        <div>        <code><a href="../directives/HasPermissionDirective.html" target="_self" >HasPermissionDirective</a></code>
+</div>
+                        <div>    <code>IonContent</code>
+</div>
+                        <div>    <code>IonHeader</code>
+</div>
+                        <div>    <code>IonTitle</code>
+</div>
+                        <div>    <code>IonToolbar</code>
+</div>
+                        <div>    <code>IonButtons</code>
+</div>
+                        <div>    <code>IonMenuButton</code>
+</div>
+                        <div>    <code>IonCard</code>
+</div>
+                        <div>    <code>IonCardHeader</code>
+</div>
+                        <div>    <code>IonCardTitle</code>
+</div>
+                        <div>    <code>IonCardSubtitle</code>
+</div>
+                        <div>    <code>IonCardContent</code>
+</div>
+                        <div>    <code>IonChip</code>
+</div>
+                        <div>    <code>IonLabel</code>
+</div>
+                        <div>    <code>IonList</code>
+</div>
+                        <div>        <code><a href="../interfaces/Item.html" target="_self" >IonItem</a></code>
+</div>
+                        <div>    <code>IonNote</code>
+</div>
+                        <div>    <code>IonButton</code>
+</div>
+                        <div>    <code>IonIcon</code>
+</div>
+                        <div>    <code>IonInput</code>
+</div>
+                        <div>    <code>IonSpinner</code>
+</div>
+                        <div>    <code>IonText</code>
+</div>
+                        <div>    <code>IonBadge</code>
+</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./home.page.scss</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./home.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+        <section data-compodoc="block-relationships">
+            <h3>Relationships</h3>
+
+            <div class="row pt-3">
+                <div class="col-sm-6">
+                    <h4>Used by</h4>
+                        <p class="comment"><i>No results matching.</i></p>
+                </div>
+
+                <div class="col-sm-6">
+                    <h4>Depends on</h4>
+                        <ul class="list-unstyled relationships-list">
+                                <li>
+                                            <code><a href="https://angular.dev/api/forms/ReactiveFormsModule" target="_blank" >ReactiveFormsModule</a></code>
+                                </li>
+                                <li>
+                                            <code><a href="../directives/HasRoleDirective.html" target="_self" >HasRoleDirective</a></code>
+                                </li>
+                                <li>
+                                            <code><a href="../directives/HasPermissionDirective.html" target="_self" >HasPermissionDirective</a></code>
+                                </li>
+                                <li>
+                                        <code>IonContent</code>
+                                </li>
+                                <li>
+                                        <code>IonHeader</code>
+                                </li>
+                                <li>
+                                        <code>IonTitle</code>
+                                </li>
+                                <li>
+                                        <code>IonToolbar</code>
+                                </li>
+                                <li>
+                                        <code>IonButtons</code>
+                                </li>
+                                <li>
+                                        <code>IonMenuButton</code>
+                                </li>
+                                <li>
+                                        <code>IonCard</code>
+                                </li>
+                                <li>
+                                        <code>IonCardHeader</code>
+                                </li>
+                                <li>
+                                        <code>IonCardTitle</code>
+                                </li>
+                                <li>
+                                        <code>IonCardSubtitle</code>
+                                </li>
+                                <li>
+                                        <code>IonCardContent</code>
+                                </li>
+                                <li>
+                                        <code>IonChip</code>
+                                </li>
+                                <li>
+                                        <code>IonLabel</code>
+                                </li>
+                                <li>
+                                        <code>IonList</code>
+                                </li>
+                                <li>
+                                            <code><a href="../interfaces/Item.html" target="_self" >IonItem</a></code>
+                                </li>
+                                <li>
+                                        <code>IonNote</code>
+                                </li>
+                                <li>
+                                        <code>IonButton</code>
+                                </li>
+                                <li>
+                                        <code>IonIcon</code>
+                                </li>
+                                <li>
+                                        <code>IonInput</code>
+                                </li>
+                                <li>
+                                        <code>IonSpinner</code>
+                                </li>
+                                <li>
+                                        <code>IonText</code>
+                                </li>
+                                <li>
+                                        <code>IonBadge</code>
+                                </li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+</div>
+
+    <div class="tab-pane fade " id="api">    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-3">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                    <td class="col-md-9">
+                        <ul class="index-list">
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#activity" >activity</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#api" >api</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#auth" >auth</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#demoLog" >demoLog</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#fb" >fb</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#items" >items</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#newItemForm" >newItemForm</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#permissionList" >permissionList</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#roleLabel" >roleLabel</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#showDemoTools" >showDemoTools</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tokenExpiresAt" >tokenExpiresAt</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-3">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                    <td class="col-md-9">
+                        <ul class="index-list">
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#addItem" >addItem</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#deleteItem" >deleteItem</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#ionViewWillEnter" >ionViewWillEnter</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#loadItems" >loadItems</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#testForbidden" >testForbidden</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#testRefresh" >testRefresh</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addItem"></a>
+                    <span class="name">
+                        <span ><b>addItem</b></span>
+                        <a href="#addItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addItem()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/features/home/home.page.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteItem"></a>
+                    <span class="name">
+                        <span ><b>deleteItem</b></span>
+                        <a href="#deleteItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteItem(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">src/app/features/home/home.page.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewWillEnter"></a>
+                    <span class="name">
+                        <span ><b>ionViewWillEnter</b></span>
+                        <a href="#ionViewWillEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewWillEnter()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/app/features/home/home.page.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Ionic reutiliza la página: recargamos cada vez que se entra en ella.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadItems"></a>
+                    <span class="name">
+                        <span ><b>loadItems</b></span>
+                        <a href="#loadItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadItems()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/features/home/home.page.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="testForbidden"></a>
+                    <span class="name">
+                        <span ><b>testForbidden</b></span>
+                        <a href="#testForbidden"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>testForbidden()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/features/home/home.page.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Llama a un endpoint de admin. Sin permiso → 403 → el interceptor manda a /forbidden.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="testRefresh"></a>
+                    <span class="name">
+                        <span ><b>testRefresh</b></span>
+                        <a href="#testRefresh"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>testRefresh()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/features/home/home.page.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Caduca el access token y lanza una petición: 401 → refresh → reintento automático.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activity"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>activity</b></span>
+                        <a href="#activity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ActivityService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/features/home/home.page.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="api"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>api</b></span>
+                        <a href="#api"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ApiService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/features/home/home.page.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="auth"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>auth</b></span>
+                        <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AuthService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/features/home/home.page.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="demoLog"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>demoLog</b></span>
+                        <a href="#demoLog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/features/home/home.page.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fb"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>fb</b></span>
+                        <a href="#fb"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(FormBuilder)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/features/home/home.page.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="items"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>items</b></span>
+                        <a href="#items"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;Item[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/features/home/home.page.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/home/home.page.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newItemForm"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>newItemForm</b></span>
+                        <a href="#newItemForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.fb.nonNullable.group({
+    name: [&#x27;&#x27;, Validators.required],
+    category: [&#x27;General&#x27;],
+    stock: [0, [Validators.required, Validators.min(0)]],
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/features/home/home.page.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="permissionList"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>permissionList</b></span>
+                        <a href="#permissionList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed(() &#x3D;&gt; [...this.auth.permissions()])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/home/home.page.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="roleLabel"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>roleLabel</b></span>
+                        <a href="#roleLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed(() &#x3D;&gt; {
+    const role &#x3D; this.auth.role();
+    return role ? ROLE_LABEL[role] : &#x27;&#x27;;
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/features/home/home.page.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showDemoTools"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>showDemoTools</b></span>
+                        <a href="#showDemoTools"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>environment.useMockBackend</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/features/home/home.page.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tokenExpiresAt"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tokenExpiresAt</b></span>
+                        <a href="#tokenExpiresAt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed(() &#x3D;&gt; {
+    const exp &#x3D; this.auth.claims()?.exp;
+    return exp ? new Date(exp * 1000).toLocaleTimeString() : &#x27;-&#x27;;
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/features/home/home.page.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, computed, inject, signal } from &#x27;@angular/core&#x27;;
+import { FormBuilder, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
+import {
+  IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton,
+  IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent,
+  IonChip, IonLabel, IonList, IonItem, IonNote, IonButton, IonIcon,
+  IonInput, IonSpinner, IonText, IonBadge,
+} from &#x27;@ionic/angular&#x27;;
+
+import { environment } from &#x27;../../../environments/environment&#x27;;
+import { ROLE_LABEL } from &#x27;../../core/models/user.model&#x27;;
+import { ActivityService } from &#x27;../../core/data/activity.service&#x27;;
+import { ApiService, Item } from &#x27;../../core/services/api.service&#x27;;
+import { AuthService } from &#x27;../../core/services/auth.service&#x27;;
+import { HasPermissionDirective, HasRoleDirective } from &#x27;../../shared/directives/has-role.directive&#x27;;
+
+@Component({
+  selector: &#x27;app-home&#x27;,
+  templateUrl: &#x27;./home.page.html&#x27;,
+  styleUrls: [&#x27;./home.page.scss&#x27;],
+  imports: [
+    ReactiveFormsModule, HasRoleDirective, HasPermissionDirective,
+    IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton,
+    IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent,
+    IonChip, IonLabel, IonList, IonItem, IonNote, IonButton, IonIcon,
+    IonInput, IonSpinner, IonText, IonBadge,
+  ],
+})
+export class HomePage {
+  protected readonly auth &#x3D; inject(AuthService);
+  private readonly api &#x3D; inject(ApiService);
+  private readonly fb &#x3D; inject(FormBuilder);
+  private readonly activity &#x3D; inject(ActivityService);
+
+  protected readonly showDemoTools &#x3D; environment.useMockBackend;
+  protected readonly items &#x3D; signal&lt;Item[]&gt;([]);
+  protected readonly loading &#x3D; signal(false);
+  protected readonly demoLog &#x3D; signal&lt;string | null&gt;(null);
+
+  protected readonly roleLabel &#x3D; computed(() &#x3D;&gt; {
+    const role &#x3D; this.auth.role();
+    return role ? ROLE_LABEL[role] : &#x27;&#x27;;
+  });
+  protected readonly permissionList &#x3D; computed(() &#x3D;&gt; [...this.auth.permissions()]);
+  protected readonly tokenExpiresAt &#x3D; computed(() &#x3D;&gt; {
+    const exp &#x3D; this.auth.claims()?.exp;
+    return exp ? new Date(exp * 1000).toLocaleTimeString() : &#x27;-&#x27;;
+  });
+
+  protected readonly newItemForm &#x3D; this.fb.nonNullable.group({
+    name: [&#x27;&#x27;, Validators.required],
+    category: [&#x27;General&#x27;],
+    stock: [0, [Validators.required, Validators.min(0)]],
+  });
+
+  /** Ionic reutiliza la página: recargamos cada vez que se entra en ella. */
+  ionViewWillEnter(): void {
+    this.loadItems();
+  }
+
+  loadItems(): void {
+    this.loading.set(true);
+    this.api.getItems().subscribe({
+      next: items &#x3D;&gt; { this.items.set(items); this.loading.set(false); },
+      error: () &#x3D;&gt; this.loading.set(false),
+    });
+  }
+
+  addItem(): void {
+    if (this.newItemForm.invalid) return;
+    this.api.createItem(this.newItemForm.getRawValue()).subscribe(item &#x3D;&gt; {
+      this.items.update(list &#x3D;&gt; [...list, item]);
+      this.activity.log(&#x27;item_created&#x27;, &#x60;Creó el producto &quot;${item.name}&quot;&#x60;);
+      this.newItemForm.reset({ name: &#x27;&#x27;, category: &#x27;General&#x27;, stock: 0 });
+    });
+  }
+
+  deleteItem(id: number): void {
+    const removed &#x3D; this.items().find(i &#x3D;&gt; i.id &#x3D;&#x3D;&#x3D; id);
+    this.api.deleteItem(id).subscribe(() &#x3D;&gt; {
+      this.items.update(list &#x3D;&gt; list.filter(i &#x3D;&gt; i.id !&#x3D;&#x3D; id));
+      this.activity.log(&#x27;item_deleted&#x27;, &#x60;Eliminó el producto &quot;${removed?.name ?? id}&quot;&#x60;);
+    });
+  }
+
+  // ---- Demo de los interceptores ------------------------------------------
+  /** Caduca el access token y lanza una petición: 401 → refresh → reintento automático. */
+  testRefresh(): void {
+    const before &#x3D; this.tokenExpiresAt();
+    this.auth.simulateExpiredAccessToken();
+    this.demoLog.set(&#x27;Token caducado. Pidiendo /items…&#x27;);
+    this.api.getItems().subscribe({
+      next: items &#x3D;&gt; {
+        this.items.set(items);
+        this.demoLog.set(&#x60;OK: el interceptor recibió 401, renovó el token y reintentó. Caducidad: ${before} → ${this.tokenExpiresAt()}&#x60;);
+      },
+      error: () &#x3D;&gt; this.demoLog.set(&#x27;El refresh falló: sesión cerrada.&#x27;),
+    });
+  }
+
+  /** Llama a un endpoint de admin. Sin permiso → 403 → el interceptor manda a /forbidden. */
+  testForbidden(): void {
+    this.demoLog.set(&#x27;Llamando a /admin/users…&#x27;);
+    this.api.probeAdminEndpoint().subscribe({
+      next: users &#x3D;&gt; this.demoLog.set(&#x60;OK (eres admin): ${users.length} usuarios.&#x60;),
+      error: () &#x3D;&gt; this.demoLog.set(null),
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header [translucent]&#x3D;&quot;true&quot;&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+      &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
+    &lt;/ion-buttons&gt;
+    &lt;ion-title&gt;Inicio&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content [fullscreen]&#x3D;&quot;true&quot; class&#x3D;&quot;ion-padding&quot;&gt;
+  &lt;!-- Sesión: datos sacados de los claims del JWT --&gt;
+  &lt;ion-card&gt;
+    &lt;ion-card-header&gt;
+      &lt;ion-card-subtitle&gt;Sesión iniciada&lt;/ion-card-subtitle&gt;
+      &lt;ion-card-title&gt;Hola, {{ auth.user()?.name }}&lt;/ion-card-title&gt;
+    &lt;/ion-card-header&gt;
+    &lt;ion-card-content&gt;
+      &lt;p&gt;Rol: &lt;ion-badge&gt;{{ roleLabel() }}&lt;/ion-badge&gt; · token válido hasta {{ tokenExpiresAt() }}&lt;/p&gt;
+      @for (p of permissionList(); track p) {
+        &lt;ion-chip outline&#x3D;&quot;true&quot;&gt;&lt;ion-label&gt;{{ p }}&lt;/ion-label&gt;&lt;/ion-chip&gt;
+      }
+    &lt;/ion-card-content&gt;
+  &lt;/ion-card&gt;
+
+  &lt;!-- Listado: lo ve cualquiera con items:read --&gt;
+  &lt;ion-card&gt;
+    &lt;ion-card-header&gt;
+      &lt;ion-card-title&gt;Productos&lt;/ion-card-title&gt;
+    &lt;/ion-card-header&gt;
+    &lt;ion-card-content&gt;
+      @if (loading()) {
+        &lt;ion-spinner name&#x3D;&quot;crescent&quot;&gt;&lt;/ion-spinner&gt;
+      } @else {
+        &lt;ion-list&gt;
+          @for (item of items(); track item.id) {
+            &lt;ion-item&gt;
+              &lt;ion-label&gt;
+                &lt;h3&gt;{{ item.name }}&lt;/h3&gt;
+                &lt;p&gt;{{ item.category }} · creado por {{ item.createdBy }}&lt;/p&gt;
+              &lt;/ion-label&gt;
+              &lt;ion-note slot&#x3D;&quot;end&quot; [color]&#x3D;&quot;item.stock &#x3D;&#x3D;&#x3D; 0 ? &#x27;danger&#x27; : &#x27;medium&#x27;&quot;&gt;{{ item.stock }} uds.&lt;/ion-note&gt;
+              &lt;!-- Borrar: solo admin --&gt;
+              &lt;ion-button *appHasRole&#x3D;&quot;&#x27;admin&#x27;&quot; slot&#x3D;&quot;end&quot; fill&#x3D;&quot;clear&quot; color&#x3D;&quot;danger&quot;
+                          (click)&#x3D;&quot;deleteItem(item.id)&quot; aria-label&#x3D;&quot;Eliminar&quot;&gt;
+                &lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;trash-outline&quot;&gt;&lt;/ion-icon&gt;
+              &lt;/ion-button&gt;
+            &lt;/ion-item&gt;
+          } @empty {
+            &lt;ion-item&gt;&lt;ion-label&gt;No hay productos.&lt;/ion-label&gt;&lt;/ion-item&gt;
+          }
+        &lt;/ion-list&gt;
+      }
+    &lt;/ion-card-content&gt;
+  &lt;/ion-card&gt;
+
+  &lt;!-- Alta: solo con permiso items:write (supervisor y admin) --&gt;
+  &lt;ion-card *appHasPermission&#x3D;&quot;&#x27;items:write&#x27;&quot;&gt;
+    &lt;ion-card-header&gt;
+      &lt;ion-card-title&gt;Nuevo producto&lt;/ion-card-title&gt;
+    &lt;/ion-card-header&gt;
+    &lt;ion-card-content&gt;
+      &lt;form [formGroup]&#x3D;&quot;newItemForm&quot; (ngSubmit)&#x3D;&quot;addItem()&quot;&gt;
+        &lt;ion-input label&#x3D;&quot;Nombre&quot; labelPlacement&#x3D;&quot;floating&quot; fill&#x3D;&quot;outline&quot; formControlName&#x3D;&quot;name&quot;&gt;&lt;/ion-input&gt;
+        &lt;ion-input label&#x3D;&quot;Categoría&quot; labelPlacement&#x3D;&quot;floating&quot; fill&#x3D;&quot;outline&quot; formControlName&#x3D;&quot;category&quot; class&#x3D;&quot;ion-margin-top&quot;&gt;&lt;/ion-input&gt;
+        &lt;ion-input label&#x3D;&quot;Stock&quot; labelPlacement&#x3D;&quot;floating&quot; fill&#x3D;&quot;outline&quot; type&#x3D;&quot;number&quot; formControlName&#x3D;&quot;stock&quot; class&#x3D;&quot;ion-margin-top&quot;&gt;&lt;/ion-input&gt;
+        &lt;ion-button type&#x3D;&quot;submit&quot; expand&#x3D;&quot;block&quot; class&#x3D;&quot;ion-margin-top&quot; [disabled]&#x3D;&quot;newItemForm.invalid&quot;&gt;
+          &lt;ion-icon slot&#x3D;&quot;start&quot; name&#x3D;&quot;add-outline&quot;&gt;&lt;/ion-icon&gt; Añadir
+        &lt;/ion-button&gt;
+      &lt;/form&gt;
+    &lt;/ion-card-content&gt;
+  &lt;/ion-card&gt;
+
+  &lt;!-- Herramientas para demostrar guards/interceptores (solo con backend simulado) --&gt;
+  @if (showDemoTools) {
+    &lt;ion-card color&#x3D;&quot;light&quot;&gt;
+      &lt;ion-card-header&gt;
+        &lt;ion-card-subtitle&gt;Pruebas de seguridad&lt;/ion-card-subtitle&gt;
+      &lt;/ion-card-header&gt;
+      &lt;ion-card-content&gt;
+        &lt;ion-button size&#x3D;&quot;small&quot; (click)&#x3D;&quot;testRefresh()&quot;&gt;
+          &lt;ion-icon slot&#x3D;&quot;start&quot; name&#x3D;&quot;refresh-outline&quot;&gt;&lt;/ion-icon&gt; Probar 401 → refresh
+        &lt;/ion-button&gt;
+        &lt;ion-button size&#x3D;&quot;small&quot; color&#x3D;&quot;warning&quot; (click)&#x3D;&quot;testForbidden()&quot;&gt;
+          &lt;ion-icon slot&#x3D;&quot;start&quot; name&#x3D;&quot;warning-outline&quot;&gt;&lt;/ion-icon&gt; Probar 403 (API admin)
+        &lt;/ion-button&gt;
+        @if (demoLog()) {
+          &lt;p&gt;&lt;ion-text color&#x3D;&quot;medium&quot;&gt;&lt;small&gt;{{ demoLog() }}&lt;/small&gt;&lt;/ion-text&gt;&lt;/p&gt;
+        }
+      &lt;/ion-card-content&gt;
+    &lt;/ion-card&gt;
+  }
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./home.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header [translucent]="true">  <ion-toolbar>    <ion-buttons slot="start">      <ion-menu-button></ion-menu-button>    </ion-buttons>    <ion-title>Inicio</ion-title>  </ion-toolbar></ion-header><ion-content [fullscreen]="true" class="ion-padding">  <!-- Sesión: datos sacados de los claims del JWT -->  <ion-card>    <ion-card-header>      <ion-card-subtitle>Sesión iniciada</ion-card-subtitle>      <ion-card-title>Hola, {{ auth.user()?.name }}</ion-card-title>    </ion-card-header>    <ion-card-content>      <p>Rol: <ion-badge>{{ roleLabel() }}</ion-badge> · token válido hasta {{ tokenExpiresAt() }}</p>      @for (p of permissionList(); track p) {        <ion-chip outline="true"><ion-label>{{ p }}</ion-label></ion-chip>      }    </ion-card-content>  </ion-card>  <!-- Listado: lo ve cualquiera con items:read -->  <ion-card>    <ion-card-header>      <ion-card-title>Productos</ion-card-title>    </ion-card-header>    <ion-card-content>      @if (loading()) {        <ion-spinner name="crescent"></ion-spinner>      } @else {        <ion-list>          @for (item of items(); track item.id) {            <ion-item>              <ion-label>                <h3>{{ item.name }}</h3>                <p>{{ item.category }} · creado por {{ item.createdBy }}</p>              </ion-label>              <ion-note slot="end" [color]="item.stock === 0 ? \'danger\' : \'medium\'">{{ item.stock }} uds.</ion-note>              <!-- Borrar: solo admin -->              <ion-button *appHasRole="\'admin\'" slot="end" fill="clear" color="danger"                          (click)="deleteItem(item.id)" aria-label="Eliminar">                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>              </ion-button>            </ion-item>          } @empty {            <ion-item><ion-label>No hay productos.</ion-label></ion-item>          }        </ion-list>      }    </ion-card-content>  </ion-card>  <!-- Alta: solo con permiso items:write (supervisor y admin) -->  <ion-card *appHasPermission="\'items:write\'">    <ion-card-header>      <ion-card-title>Nuevo producto</ion-card-title>    </ion-card-header>    <ion-card-content>      <form [formGroup]="newItemForm" (ngSubmit)="addItem()">        <ion-input label="Nombre" labelPlacement="floating" fill="outline" formControlName="name"></ion-input>        <ion-input label="Categoría" labelPlacement="floating" fill="outline" formControlName="category" class="ion-margin-top"></ion-input>        <ion-input label="Stock" labelPlacement="floating" fill="outline" type="number" formControlName="stock" class="ion-margin-top"></ion-input>        <ion-button type="submit" expand="block" class="ion-margin-top" [disabled]="newItemForm.invalid">          <ion-icon slot="start" name="add-outline"></ion-icon> Añadir        </ion-button>      </form>    </ion-card-content>  </ion-card>  <!-- Herramientas para demostrar guards/interceptores (solo con backend simulado) -->  @if (showDemoTools) {    <ion-card color="light">      <ion-card-header>        <ion-card-subtitle>Pruebas de seguridad</ion-card-subtitle>      </ion-card-header>      <ion-card-content>        <ion-button size="small" (click)="testRefresh()">          <ion-icon slot="start" name="refresh-outline"></ion-icon> Probar 401 → refresh        </ion-button>        <ion-button size="small" color="warning" (click)="testForbidden()">          <ion-icon slot="start" name="warning-outline"></ion-icon> Probar 403 (API admin)        </ion-button>        @if (demoLog()) {          <p><ion-text color="medium"><small>{{ demoLog() }}</small></ion-text></p>        }      </ion-card-content>    </ion-card>  }</ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChartComponent', 'selector': 'app-chart'},{'name': 'DashboardPage', 'selector': 'app-dashboard'},{'name': 'DataTableComponent', 'selector': 'app-data-table'},{'name': 'ForbiddenPage', 'selector': 'app-forbidden'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'ItemFormPage', 'selector': 'app-item-form'},{'name': 'ItemsPage', 'selector': 'app-items'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'ReportsPage', 'selector': 'app-reports'},{'name': 'StatCardComponent', 'selector': 'app-stat-card'}];
+    var DIRECTIVES = [{'name': 'HasPermissionDirective', 'selector': '[appHasPermission]'},{'name': 'HasRoleDirective', 'selector': '[appHasRole]'}];
+    var ACTUAL_COMPONENT = {'name': 'HomePage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HomePage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

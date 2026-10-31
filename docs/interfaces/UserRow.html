@@ -1,0 +1,720 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>gestion-multiplataforma documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">gestion-multiplataforma documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  UserRow</li>
+</ol>
+
+<div class="io-file io-file-path" data-compodoc="entity-file-path">
+    <span class="icon ion-ios-document" aria-hidden="true"></span>
+    <code>src/app/features/dashboard/dashboard.page.ts</code>
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#api" 
+                class="nav-link"
+                
+                role="tab" id="api-tab" data-bs-toggle="tab" data-link="api">API</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+
+
+            </div>
+
+    <div class="tab-pane fade " id="api"><section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-3">
+                    <h6><b>Properties</b></h6>
+                </td>
+                <td class="col-md-9">
+                    <ul class="index-list">
+                        <li>
+                                <a href="#email" class="reference-link ">
+                                    <span class="reference-badge reference-badge--property" aria-hidden="true">P</span><span class="reference-link-label">email</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a href="#id" class="reference-link ">
+                                    <span class="reference-badge reference-badge--property" aria-hidden="true">P</span><span class="reference-link-label">id</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a href="#name" class="reference-link ">
+                                    <span class="reference-badge reference-badge--property" aria-hidden="true">P</span><span class="reference-link-label">name</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a href="#permissions" class="reference-link ">
+                                    <span class="reference-badge reference-badge--property" aria-hidden="true">P</span><span class="reference-link-label">permissions</span>
+                                </a>
+                        </li>
+                        <li>
+                                <a href="#role" class="reference-link ">
+                                    <span class="reference-badge reference-badge--property" aria-hidden="true">P</span><span class="reference-link-label">role</span>
+                                </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+    <section data-compodoc="block-properties">
+        <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <a name="email"></a>
+                                <span class="name "><b>email</b>
+                                    <a href="#email">
+                                        <span class="icon ion-ios-link"></span>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <code>email:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                            </td>
+                        </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </td>
+                            </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/features/dashboard/dashboard.page.ts:19</a></div>
+                                </td>
+                            </tr>
+
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <a name="id"></a>
+                                <span class="name "><b>id</b>
+                                    <a href="#id">
+                                        <span class="icon ion-ios-link"></span>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                            </td>
+                        </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                </td>
+                            </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/features/dashboard/dashboard.page.ts:19</a></div>
+                                </td>
+                            </tr>
+
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <a name="name"></a>
+                                <span class="name "><b>name</b>
+                                    <a href="#name">
+                                        <span class="icon ion-ios-link"></span>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <code>name:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                            </td>
+                        </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </td>
+                            </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/features/dashboard/dashboard.page.ts:19</a></div>
+                                </td>
+                            </tr>
+
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <a name="permissions"></a>
+                                <span class="name "><b>permissions</b>
+                                    <a href="#permissions">
+                                        <span class="icon ion-ios-link"></span>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <code>permissions:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                            </td>
+                        </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </td>
+                            </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/features/dashboard/dashboard.page.ts:19</a></div>
+                                </td>
+                            </tr>
+
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <a name="role"></a>
+                                <span class="name "><b>role</b>
+                                    <a href="#role">
+                                        <span class="icon ion-ios-link"></span>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <code>role:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                            </td>
+                        </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                </td>
+                            </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/features/dashboard/dashboard.page.ts:19</a></div>
+                                </td>
+                            </tr>
+
+                </tbody>
+            </table>
+    </section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, computed, inject, signal } from &#x27;@angular/core&#x27;;
+import { toSignal } from &#x27;@angular/core/rxjs-interop&#x27;;
+import { DatePipe } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { forkJoin } from &#x27;rxjs&#x27;;
+import {
+  IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonHeader,
+  IonItem, IonLabel, IonList, IonMenuButton, IonSearchbar, IonSpinner, IonTitle, IonToolbar,
+} from &#x27;@ionic/angular&#x27;;
+
+import { ActivityService } from &#x27;../../core/data/activity.service&#x27;;
+import { ROLE_LABEL } from &#x27;../../core/models/user.model&#x27;;
+import { AdminUser, ApiService, Item, Report } from &#x27;../../core/services/api.service&#x27;;
+import { ExportService } from &#x27;../../core/services/export.service&#x27;;
+import { ChartComponent } from &#x27;../../shared/components/chart/chart.component&#x27;;
+import { DataTableComponent, TableColumn } from &#x27;../../shared/components/data-table/data-table.component&#x27;;
+import { StatCardComponent } from &#x27;../../shared/components/stat-card/stat-card.component&#x27;;
+
+interface UserRow { id: number; name: string; email: string; role: string; permissions: string; }
+
+/**
+ * Panel de administración (/admin, solo admin).
+ * Fuente 1 (REST): productos, informe y usuarios, cargados en paralelo con forkJoin.
+ * Fuente 2 (Firestore o local): actividad en tiempo real.
+ */
+@Component({
+  selector: &#x27;app-dashboard&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    FormsModule, DatePipe, StatCardComponent, ChartComponent, DataTableComponent,
+    IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, IonButton,
+    IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonList, IonItem, IonLabel,
+    IonSearchbar, IonSpinner,
+  ],
+  template: &#x60;
+    &lt;ion-header [translucent]&#x3D;&quot;true&quot;&gt;
+      &lt;ion-toolbar&gt;
+        &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;&lt;ion-menu-button aria-label&#x3D;&quot;Abrir menú&quot;&gt;&lt;/ion-menu-button&gt;&lt;/ion-buttons&gt;
+        &lt;ion-title&gt;Administración&lt;/ion-title&gt;
+      &lt;/ion-toolbar&gt;
+    &lt;/ion-header&gt;
+
+    &lt;ion-content [fullscreen]&#x3D;&quot;true&quot; class&#x3D;&quot;ion-padding&quot;&gt;
+      @if (loading()) {
+        &lt;div class&#x3D;&quot;center&quot; role&#x3D;&quot;status&quot;&gt;&lt;ion-spinner name&#x3D;&quot;crescent&quot;&gt;&lt;/ion-spinner&gt; Cargando panel…&lt;/div&gt;
+      } @else if (error()) {
+        &lt;div class&#x3D;&quot;center&quot; role&#x3D;&quot;alert&quot;&gt;
+          &lt;p&gt;{{ error() }}&lt;/p&gt;
+          &lt;ion-button (click)&#x3D;&quot;load()&quot;&gt;Reintentar&lt;/ion-button&gt;
+        &lt;/div&gt;
+      } @else if (report(); as r) {
+        &lt;section class&#x3D;&quot;stats&quot; aria-label&#x3D;&quot;Resumen&quot;&gt;
+          &lt;app-stat-card label&#x3D;&quot;Productos&quot; [value]&#x3D;&quot;r.totalItems&quot; icon&#x3D;&quot;cube-outline&quot; /&gt;
+          &lt;app-stat-card label&#x3D;&quot;Unidades en stock&quot; [value]&#x3D;&quot;r.totalStock&quot; icon&#x3D;&quot;stats-chart-outline&quot; /&gt;
+          &lt;app-stat-card label&#x3D;&quot;Sin stock&quot; [value]&#x3D;&quot;r.outOfStock.length&quot; icon&#x3D;&quot;warning-outline&quot;
+                         [tone]&#x3D;&quot;r.outOfStock.length ? &#x27;danger&#x27; : &#x27;success&#x27;&quot; /&gt;
+          &lt;app-stat-card label&#x3D;&quot;Usuarios&quot; [value]&#x3D;&quot;users().length&quot; icon&#x3D;&quot;person-circle-outline&quot; /&gt;
+        &lt;/section&gt;
+
+        &lt;div class&#x3D;&quot;charts&quot;&gt;
+          &lt;ion-card&gt;
+            &lt;ion-card-header&gt;&lt;ion-card-title&gt;Stock por categoría&lt;/ion-card-title&gt;&lt;/ion-card-header&gt;
+            &lt;ion-card-content&gt;
+              &lt;app-chart type&#x3D;&quot;bar&quot; [labels]&#x3D;&quot;categoryLabels()&quot; [series]&#x3D;&quot;categorySeries()&quot;
+                         ariaLabel&#x3D;&quot;Gráfico de barras con las unidades en stock por categoría&quot;
+                         [summary]&#x3D;&quot;categorySummary()&quot; /&gt;
+            &lt;/ion-card-content&gt;
+          &lt;/ion-card&gt;
+          &lt;ion-card&gt;
+            &lt;ion-card-header&gt;&lt;ion-card-title&gt;Usuarios por rol&lt;/ion-card-title&gt;&lt;/ion-card-header&gt;
+            &lt;ion-card-content&gt;
+              &lt;app-chart type&#x3D;&quot;doughnut&quot; [labels]&#x3D;&quot;roleLabels()&quot; [series]&#x3D;&quot;roleSeries()&quot;
+                         ariaLabel&#x3D;&quot;Gráfico circular con el número de usuarios por rol&quot;
+                         [summary]&#x3D;&quot;roleSummary()&quot; /&gt;
+            &lt;/ion-card-content&gt;
+          &lt;/ion-card&gt;
+        &lt;/div&gt;
+
+        &lt;ion-card&gt;
+          &lt;ion-card-content&gt;
+            &lt;div class&#x3D;&quot;buttons&quot;&gt;
+              &lt;ion-button fill&#x3D;&quot;outline&quot; (click)&#x3D;&quot;exportCsv()&quot;&gt;Exportar usuarios CSV&lt;/ion-button&gt;
+              &lt;ion-button fill&#x3D;&quot;outline&quot; (click)&#x3D;&quot;exportPdf()&quot;&gt;Exportar usuarios PDF&lt;/ion-button&gt;
+            &lt;/div&gt;
+            &lt;app-data-table caption&#x3D;&quot;Usuarios, roles y permisos&quot; rowKey&#x3D;&quot;id&quot; [pageSize]&#x3D;&quot;5&quot;
+                            [columns]&#x3D;&quot;userColumns&quot; [rows]&#x3D;&quot;userRows()&quot; /&gt;
+          &lt;/ion-card-content&gt;
+        &lt;/ion-card&gt;
+
+        &lt;ion-card&gt;
+          &lt;ion-card-header&gt;
+            &lt;ion-card-title&gt;Actividad en tiempo real&lt;/ion-card-title&gt;
+            &lt;p class&#x3D;&quot;source&quot;&gt;Fuente: {{ source }}&lt;/p&gt;
+          &lt;/ion-card-header&gt;
+          &lt;ion-card-content&gt;
+            &lt;ion-searchbar label&#x3D;&quot;Filtrar actividad&quot; labelPlacement&#x3D;&quot;floating&quot;
+                           placeholder&#x3D;&quot;Usuario o acción&quot; [(ngModel)]&#x3D;&quot;activityFilter&quot;&gt;&lt;/ion-searchbar&gt;
+            &lt;ion-list aria-live&#x3D;&quot;polite&quot; aria-label&#x3D;&quot;Últimas acciones&quot;&gt;
+              @for (e of filteredActivity(); track e.id) {
+                &lt;ion-item&gt;
+                  &lt;ion-label class&#x3D;&quot;ion-text-wrap&quot;&gt;
+                    &lt;h3&gt;{{ e.actor }}&lt;/h3&gt;
+                    &lt;p&gt;{{ e.detail }}&lt;/p&gt;
+                    &lt;p&gt;&lt;time [attr.datetime]&#x3D;&quot;e.at&quot;&gt;{{ e.at | date: &#x27;dd/MM/yyyy HH:mm:ss&#x27; }}&lt;/time&gt;&lt;/p&gt;
+                  &lt;/ion-label&gt;
+                &lt;/ion-item&gt;
+              } @empty {
+                &lt;ion-item&gt;&lt;ion-label&gt;No hay actividad que mostrar.&lt;/ion-label&gt;&lt;/ion-item&gt;
+              }
+            &lt;/ion-list&gt;
+          &lt;/ion-card-content&gt;
+        &lt;/ion-card&gt;
+      }
+    &lt;/ion-content&gt;
+  &#x60;,
+  styles: &#x60;
+    .center { text-align: center; padding: 24px; }
+    .stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 8px; }
+    .charts { display: grid; gap: 0 12px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .source { margin: 4px 16px 0 0; font-size: 0.875rem; }
+  &#x60;,
+})
+export class DashboardPage {
+  private readonly api &#x3D; inject(ApiService);
+  private readonly activity &#x3D; inject(ActivityService);
+  private readonly exporter &#x3D; inject(ExportService);
+
+  protected readonly loading &#x3D; signal(false);
+  protected readonly error &#x3D; signal&lt;string | null&gt;(null);
+  protected readonly items &#x3D; signal&lt;Item[]&gt;([]);
+  protected readonly report &#x3D; signal&lt;Report | null&gt;(null);
+  protected readonly users &#x3D; signal&lt;AdminUser[]&gt;([]);
+
+  protected readonly source &#x3D; this.activity.sourceLabel;
+  protected readonly activityFilter &#x3D; signal(&#x27;&#x27;);
+  private readonly events &#x3D; toSignal(this.activity.events$, { initialValue: [] });
+  protected readonly filteredActivity &#x3D; computed(() &#x3D;&gt; {
+    const text &#x3D; this.activityFilter().trim().toLowerCase();
+    return this.events().filter(e &#x3D;&gt; !text || &#x60;${e.actor} ${e.detail}&#x60;.toLowerCase().includes(text));
+  });
+
+  protected readonly userColumns: TableColumn&lt;UserRow&gt;[] &#x3D; [
+    { key: &#x27;name&#x27;, header: &#x27;Nombre&#x27;, sortable: true },
+    { key: &#x27;email&#x27;, header: &#x27;Correo&#x27;, sortable: true },
+    { key: &#x27;role&#x27;, header: &#x27;Rol&#x27;, sortable: true },
+    { key: &#x27;permissions&#x27;, header: &#x27;Permisos&#x27; },
+  ];
+  protected readonly userRows &#x3D; computed&lt;UserRow[]&gt;(() &#x3D;&gt;
+    this.users().map(u &#x3D;&gt; ({
+      id: u.id, name: u.name, email: u.email, role: ROLE_LABEL[u.role], permissions: u.permissions.join(&#x27;, &#x27;),
+    })),
+  );
+
+  protected readonly categoryLabels &#x3D; computed(() &#x3D;&gt; Object.keys(this.report()?.byCategory ?? {}));
+  protected readonly categorySeries &#x3D; computed(() &#x3D;&gt; [
+    { label: &#x27;Unidades&#x27;, data: Object.values(this.report()?.byCategory ?? {}) },
+  ]);
+  protected readonly categorySummary &#x3D; computed(() &#x3D;&gt;
+    Object.entries(this.report()?.byCategory ?? {}).map(([c, n]) &#x3D;&gt; &#x60;${c}: ${n}&#x60;).join(&#x27;; &#x27;),
+  );
+
+  private readonly roleCounts &#x3D; computed(() &#x3D;&gt; {
+    const counts: Record&lt;string, number&gt; &#x3D; {};
+    for (const u of this.users()) counts[ROLE_LABEL[u.role]] &#x3D; (counts[ROLE_LABEL[u.role]] ?? 0) + 1;
+    return counts;
+  });
+  protected readonly roleLabels &#x3D; computed(() &#x3D;&gt; Object.keys(this.roleCounts()));
+  protected readonly roleSeries &#x3D; computed(() &#x3D;&gt; [{ label: &#x27;Usuarios&#x27;, data: Object.values(this.roleCounts()) }]);
+  protected readonly roleSummary &#x3D; computed(() &#x3D;&gt;
+    Object.entries(this.roleCounts()).map(([r, n]) &#x3D;&gt; &#x60;${r}: ${n}&#x60;).join(&#x27;; &#x27;),
+  );
+
+  private readonly exportColumns &#x3D; [
+    { header: &#x27;Nombre&#x27;, value: (u: UserRow) &#x3D;&gt; u.name },
+    { header: &#x27;Correo&#x27;, value: (u: UserRow) &#x3D;&gt; u.email },
+    { header: &#x27;Rol&#x27;, value: (u: UserRow) &#x3D;&gt; u.role },
+    { header: &#x27;Permisos&#x27;, value: (u: UserRow) &#x3D;&gt; u.permissions },
+  ];
+
+  ionViewWillEnter(): void {
+    this.load();
+  }
+
+  protected load(): void {
+    this.loading.set(true);
+    this.error.set(null);
+    // forkJoin lanza las tres peticiones a la vez y espera a que terminen todas
+    forkJoin({
+      items: this.api.getItems(),
+      report: this.api.getReport(),
+      users: this.api.getUsers(),
+    }).subscribe({
+      next: ({ items, report, users }) &#x3D;&gt; {
+        this.items.set(items);
+        this.report.set(report);
+        this.users.set(users);
+        this.loading.set(false);
+      },
+      error: () &#x3D;&gt; {
+        this.error.set(&#x27;No se pudo cargar el panel. Inténtalo de nuevo.&#x27;);
+        this.loading.set(false);
+      },
+    });
+  }
+
+  protected exportCsv(): void {
+    this.exporter.downloadCsv(&#x27;usuarios.csv&#x27;, this.exportColumns, this.userRows());
+  }
+
+  protected exportPdf(): void {
+    void this.exporter.downloadPdf(&#x27;usuarios.pdf&#x27;, &#x27;Usuarios y permisos&#x27;, this.exportColumns, this.userRows());
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserRow.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

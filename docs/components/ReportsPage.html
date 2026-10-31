@@ -1,0 +1,1316 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>gestion-multiplataforma documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">gestion-multiplataforma documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ReportsPage</li>
+</ol>
+
+<div class="io-file io-file-path" data-compodoc="entity-file-path">
+    <span class="icon ion-ios-document" aria-hidden="true"></span>
+    <code>src/app/features/reports/reports.page.ts</code>
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#api" class="nav-link"
+                role="tab" id="api-tab" data-bs-toggle="tab" data-link="api">API</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Informes de stock (/informes, supervisor y admin).</p>
+
+    </p>
+
+
+
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+    </div>
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-reports</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                        <div>        <code><a href="../components/StatCardComponent.html" target="_self" >StatCardComponent</a></code>
+</div>
+                        <div>        <code><a href="../components/ChartComponent.html" target="_self" >ChartComponent</a></code>
+</div>
+                        <div>        <code><a href="../components/DataTableComponent.html" target="_self" >DataTableComponent</a></code>
+</div>
+                        <div>    <code>IonContent</code>
+</div>
+                        <div>    <code>IonHeader</code>
+</div>
+                        <div>    <code>IonTitle</code>
+</div>
+                        <div>    <code>IonToolbar</code>
+</div>
+                        <div>    <code>IonButtons</code>
+</div>
+                        <div>    <code>IonMenuButton</code>
+</div>
+                        <div>    <code>IonButton</code>
+</div>
+                        <div>    <code>IonCard</code>
+</div>
+                        <div>    <code>IonCardHeader</code>
+</div>
+                        <div>    <code>IonCardTitle</code>
+</div>
+                        <div>    <code>IonCardContent</code>
+</div>
+                        <div>    <code>IonSpinner</code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+    .center { text-align: center; padding: 24px; }
+    .stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  </code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ion-header [translucent]&#x3D;&quot;true&quot;&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;&lt;ion-menu-button aria-label&#x3D;&quot;Abrir menú&quot;&gt;&lt;/ion-menu-button&gt;&lt;/ion-buttons&gt;
+    &lt;ion-title&gt;Informes&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content [fullscreen]&#x3D;&quot;true&quot; class&#x3D;&quot;ion-padding&quot;&gt;
+  @if (loading()) {
+    &lt;div class&#x3D;&quot;center&quot; role&#x3D;&quot;status&quot;&gt;&lt;ion-spinner name&#x3D;&quot;crescent&quot;&gt;&lt;/ion-spinner&gt; Cargando informe…&lt;/div&gt;
+  } @else if (error()) {
+    &lt;div class&#x3D;&quot;center&quot; role&#x3D;&quot;alert&quot;&gt;
+      &lt;p&gt;{{ error() }}&lt;/p&gt;
+      &lt;ion-button (click)&#x3D;&quot;load()&quot;&gt;Reintentar&lt;/ion-button&gt;
+    &lt;/div&gt;
+  } @else if (report(); as r) {
+    &lt;section class&#x3D;&quot;stats&quot; aria-label&#x3D;&quot;Resumen&quot;&gt;
+      &lt;app-stat-card label&#x3D;&quot;Productos&quot; [value]&#x3D;&quot;r.totalItems&quot; icon&#x3D;&quot;cube-outline&quot; /&gt;
+      &lt;app-stat-card label&#x3D;&quot;Unidades en stock&quot; [value]&#x3D;&quot;r.totalStock&quot; icon&#x3D;&quot;stats-chart-outline&quot; /&gt;
+      &lt;app-stat-card label&#x3D;&quot;Sin stock&quot; [value]&#x3D;&quot;r.outOfStock.length&quot; icon&#x3D;&quot;warning-outline&quot;
+                     [tone]&#x3D;&quot;r.outOfStock.length ? &#x27;danger&#x27; : &#x27;success&#x27;&quot;
+                     [hint]&#x3D;&quot;r.outOfStock.join(&#x27;, &#x27;)&quot; /&gt;
+    &lt;/section&gt;
+
+    &lt;ion-card&gt;
+      &lt;ion-card-header&gt;&lt;ion-card-title&gt;Stock por categoría&lt;/ion-card-title&gt;&lt;/ion-card-header&gt;
+      &lt;ion-card-content&gt;
+        &lt;app-chart type&#x3D;&quot;bar&quot; [labels]&#x3D;&quot;labels()&quot; [series]&#x3D;&quot;series()&quot;
+                   ariaLabel&#x3D;&quot;Gráfico de barras con las unidades en stock por categoría&quot;
+                   [summary]&#x3D;&quot;summary()&quot; /&gt;
+      &lt;/ion-card-content&gt;
+    &lt;/ion-card&gt;
+
+    &lt;ion-card&gt;
+      &lt;ion-card-content&gt;
+        &lt;div class&#x3D;&quot;buttons&quot;&gt;
+          &lt;ion-button fill&#x3D;&quot;outline&quot; (click)&#x3D;&quot;exportCsv()&quot;&gt;Exportar CSV&lt;/ion-button&gt;
+          &lt;ion-button fill&#x3D;&quot;outline&quot; (click)&#x3D;&quot;exportPdf()&quot;&gt;Exportar PDF&lt;/ion-button&gt;
+        &lt;/div&gt;
+        &lt;app-data-table caption&#x3D;&quot;Detalle de productos&quot; rowKey&#x3D;&quot;id&quot; [pageSize]&#x3D;&quot;6&quot;
+                        [columns]&#x3D;&quot;columns&quot; [rows]&#x3D;&quot;items()&quot; /&gt;
+      &lt;/ion-card-content&gt;
+    &lt;/ion-card&gt;
+  }
+&lt;/ion-content&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+        <section data-compodoc="block-relationships">
+            <h3>Relationships</h3>
+
+            <div class="row pt-3">
+                <div class="col-sm-6">
+                    <h4>Used by</h4>
+                        <p class="comment"><i>No results matching.</i></p>
+                </div>
+
+                <div class="col-sm-6">
+                    <h4>Depends on</h4>
+                        <ul class="list-unstyled relationships-list">
+                                <li>
+                                            <code><a href="../components/StatCardComponent.html" target="_self" >StatCardComponent</a></code>
+                                </li>
+                                <li>
+                                            <code><a href="../components/ChartComponent.html" target="_self" >ChartComponent</a></code>
+                                </li>
+                                <li>
+                                            <code><a href="../components/DataTableComponent.html" target="_self" >DataTableComponent</a></code>
+                                </li>
+                                <li>
+                                        <code>IonContent</code>
+                                </li>
+                                <li>
+                                        <code>IonHeader</code>
+                                </li>
+                                <li>
+                                        <code>IonTitle</code>
+                                </li>
+                                <li>
+                                        <code>IonToolbar</code>
+                                </li>
+                                <li>
+                                        <code>IonButtons</code>
+                                </li>
+                                <li>
+                                        <code>IonMenuButton</code>
+                                </li>
+                                <li>
+                                        <code>IonButton</code>
+                                </li>
+                                <li>
+                                        <code>IonCard</code>
+                                </li>
+                                <li>
+                                        <code>IonCardHeader</code>
+                                </li>
+                                <li>
+                                        <code>IonCardTitle</code>
+                                </li>
+                                <li>
+                                        <code>IonCardContent</code>
+                                </li>
+                                <li>
+                                        <code>IonSpinner</code>
+                                </li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+</div>
+
+    <div class="tab-pane fade " id="api">    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-3">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                    <td class="col-md-9">
+                        <ul class="index-list">
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#api" >api</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#columns" >columns</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#exportColumns" >exportColumns</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#exporter" >exporter</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#items" >items</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#labels" >labels</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#report" >report</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#series" >series</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#summary" >summary</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-3">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                    <td class="col-md-9">
+                        <ul class="index-list">
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                    <span class="modifier">Protected</span>
+                                <a href="#exportCsv" >exportCsv</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                    <span class="modifier">Protected</span>
+                                <a href="#exportPdf" >exportPdf</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#ionViewWillEnter" >ionViewWillEnter</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                    <span class="modifier">Protected</span>
+                                <a href="#load" >load</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportCsv"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>exportCsv</b></span>
+                        <a href="#exportCsv"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>exportCsv()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/features/reports/reports.page.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportPdf"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>exportPdf</b></span>
+                        <a href="#exportPdf"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>exportPdf()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="126"
+                                    class="link-to-prism">src/app/features/reports/reports.page.ts:126</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewWillEnter"></a>
+                    <span class="name">
+                        <span ><b>ionViewWillEnter</b></span>
+                        <a href="#ionViewWillEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewWillEnter()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/features/reports/reports.page.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="load"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                        <span ><b>load</b></span>
+                        <a href="#load"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>load()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="106"
+                                    class="link-to-prism">src/app/features/reports/reports.page.ts:106</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="api"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>api</b></span>
+                        <a href="#api"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ApiService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/features/reports/reports.page.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="columns"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>columns</b></span>
+                        <a href="#columns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TableColumn&lt;Item&gt;[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { key: &#x27;name&#x27;, header: &#x27;Producto&#x27;, sortable: true },
+    { key: &#x27;category&#x27;, header: &#x27;Categoría&#x27;, sortable: true },
+    { key: &#x27;stock&#x27;, header: &#x27;Stock&#x27;, sortable: true, align: &#x27;end&#x27; },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/features/reports/reports.page.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/features/reports/reports.page.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportColumns"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>exportColumns</b></span>
+                        <a href="#exportColumns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { header: &#x27;Producto&#x27;, value: (i: Item) &#x3D;&gt; i.name },
+    { header: &#x27;Categoría&#x27;, value: (i: Item) &#x3D;&gt; i.category },
+    { header: &#x27;Stock&#x27;, value: (i: Item) &#x3D;&gt; i.stock },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/features/reports/reports.page.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exporter"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>exporter</b></span>
+                        <a href="#exporter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ExportService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/features/reports/reports.page.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="items"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>items</b></span>
+                        <a href="#items"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;Item[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/features/reports/reports.page.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labels"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>labels</b></span>
+                        <a href="#labels"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed(() &#x3D;&gt; Object.keys(this.report()?.byCategory ?? {}))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/features/reports/reports.page.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(false)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/features/reports/reports.page.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="report"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>report</b></span>
+                        <a href="#report"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;Report | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/features/reports/reports.page.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="series"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>series</b></span>
+                        <a href="#series"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed(() &#x3D;&gt; [{ label: &#x27;Unidades&#x27;, data: Object.values(this.report()?.byCategory ?? {}) }])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/features/reports/reports.page.ts:91</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="summary"></a>
+                    <span class="name">
+                            <span class="modifier">Protected</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>summary</b></span>
+                        <a href="#summary"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#now" target="_self" >unknown</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed(() &#x3D;&gt;
+    Object.entries(this.report()?.byCategory ?? {}).map(([c, n]) &#x3D;&gt; &#x60;${c}: ${n}&#x60;).join(&#x27;; &#x27;),
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/features/reports/reports.page.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, computed, inject, signal } from &#x27;@angular/core&#x27;;
+import { forkJoin } from &#x27;rxjs&#x27;;
+import {
+  IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonHeader,
+  IonMenuButton, IonSpinner, IonTitle, IonToolbar,
+} from &#x27;@ionic/angular&#x27;;
+
+import { ApiService, Item, Report } from &#x27;../../core/services/api.service&#x27;;
+import { ExportService } from &#x27;../../core/services/export.service&#x27;;
+import { ChartComponent } from &#x27;../../shared/components/chart/chart.component&#x27;;
+import { DataTableComponent, TableColumn } from &#x27;../../shared/components/data-table/data-table.component&#x27;;
+import { StatCardComponent } from &#x27;../../shared/components/stat-card/stat-card.component&#x27;;
+
+/** Informes de stock (/informes, supervisor y admin). */
+@Component({
+  selector: &#x27;app-reports&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    StatCardComponent, ChartComponent, DataTableComponent,
+    IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, IonButton,
+    IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonSpinner,
+  ],
+  template: &#x60;
+    &lt;ion-header [translucent]&#x3D;&quot;true&quot;&gt;
+      &lt;ion-toolbar&gt;
+        &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;&lt;ion-menu-button aria-label&#x3D;&quot;Abrir menú&quot;&gt;&lt;/ion-menu-button&gt;&lt;/ion-buttons&gt;
+        &lt;ion-title&gt;Informes&lt;/ion-title&gt;
+      &lt;/ion-toolbar&gt;
+    &lt;/ion-header&gt;
+
+    &lt;ion-content [fullscreen]&#x3D;&quot;true&quot; class&#x3D;&quot;ion-padding&quot;&gt;
+      @if (loading()) {
+        &lt;div class&#x3D;&quot;center&quot; role&#x3D;&quot;status&quot;&gt;&lt;ion-spinner name&#x3D;&quot;crescent&quot;&gt;&lt;/ion-spinner&gt; Cargando informe…&lt;/div&gt;
+      } @else if (error()) {
+        &lt;div class&#x3D;&quot;center&quot; role&#x3D;&quot;alert&quot;&gt;
+          &lt;p&gt;{{ error() }}&lt;/p&gt;
+          &lt;ion-button (click)&#x3D;&quot;load()&quot;&gt;Reintentar&lt;/ion-button&gt;
+        &lt;/div&gt;
+      } @else if (report(); as r) {
+        &lt;section class&#x3D;&quot;stats&quot; aria-label&#x3D;&quot;Resumen&quot;&gt;
+          &lt;app-stat-card label&#x3D;&quot;Productos&quot; [value]&#x3D;&quot;r.totalItems&quot; icon&#x3D;&quot;cube-outline&quot; /&gt;
+          &lt;app-stat-card label&#x3D;&quot;Unidades en stock&quot; [value]&#x3D;&quot;r.totalStock&quot; icon&#x3D;&quot;stats-chart-outline&quot; /&gt;
+          &lt;app-stat-card label&#x3D;&quot;Sin stock&quot; [value]&#x3D;&quot;r.outOfStock.length&quot; icon&#x3D;&quot;warning-outline&quot;
+                         [tone]&#x3D;&quot;r.outOfStock.length ? &#x27;danger&#x27; : &#x27;success&#x27;&quot;
+                         [hint]&#x3D;&quot;r.outOfStock.join(&#x27;, &#x27;)&quot; /&gt;
+        &lt;/section&gt;
+
+        &lt;ion-card&gt;
+          &lt;ion-card-header&gt;&lt;ion-card-title&gt;Stock por categoría&lt;/ion-card-title&gt;&lt;/ion-card-header&gt;
+          &lt;ion-card-content&gt;
+            &lt;app-chart type&#x3D;&quot;bar&quot; [labels]&#x3D;&quot;labels()&quot; [series]&#x3D;&quot;series()&quot;
+                       ariaLabel&#x3D;&quot;Gráfico de barras con las unidades en stock por categoría&quot;
+                       [summary]&#x3D;&quot;summary()&quot; /&gt;
+          &lt;/ion-card-content&gt;
+        &lt;/ion-card&gt;
+
+        &lt;ion-card&gt;
+          &lt;ion-card-content&gt;
+            &lt;div class&#x3D;&quot;buttons&quot;&gt;
+              &lt;ion-button fill&#x3D;&quot;outline&quot; (click)&#x3D;&quot;exportCsv()&quot;&gt;Exportar CSV&lt;/ion-button&gt;
+              &lt;ion-button fill&#x3D;&quot;outline&quot; (click)&#x3D;&quot;exportPdf()&quot;&gt;Exportar PDF&lt;/ion-button&gt;
+            &lt;/div&gt;
+            &lt;app-data-table caption&#x3D;&quot;Detalle de productos&quot; rowKey&#x3D;&quot;id&quot; [pageSize]&#x3D;&quot;6&quot;
+                            [columns]&#x3D;&quot;columns&quot; [rows]&#x3D;&quot;items()&quot; /&gt;
+          &lt;/ion-card-content&gt;
+        &lt;/ion-card&gt;
+      }
+    &lt;/ion-content&gt;
+  &#x60;,
+  styles: &#x60;
+    .center { text-align: center; padding: 24px; }
+    .stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  &#x60;,
+})
+export class ReportsPage {
+  private readonly api &#x3D; inject(ApiService);
+  private readonly exporter &#x3D; inject(ExportService);
+
+  protected readonly loading &#x3D; signal(false);
+  protected readonly error &#x3D; signal&lt;string | null&gt;(null);
+  protected readonly report &#x3D; signal&lt;Report | null&gt;(null);
+  protected readonly items &#x3D; signal&lt;Item[]&gt;([]);
+
+  protected readonly columns: TableColumn&lt;Item&gt;[] &#x3D; [
+    { key: &#x27;name&#x27;, header: &#x27;Producto&#x27;, sortable: true },
+    { key: &#x27;category&#x27;, header: &#x27;Categoría&#x27;, sortable: true },
+    { key: &#x27;stock&#x27;, header: &#x27;Stock&#x27;, sortable: true, align: &#x27;end&#x27; },
+  ];
+  protected readonly labels &#x3D; computed(() &#x3D;&gt; Object.keys(this.report()?.byCategory ?? {}));
+  protected readonly series &#x3D; computed(() &#x3D;&gt; [{ label: &#x27;Unidades&#x27;, data: Object.values(this.report()?.byCategory ?? {}) }]);
+  protected readonly summary &#x3D; computed(() &#x3D;&gt;
+    Object.entries(this.report()?.byCategory ?? {}).map(([c, n]) &#x3D;&gt; &#x60;${c}: ${n}&#x60;).join(&#x27;; &#x27;),
+  );
+
+  private readonly exportColumns &#x3D; [
+    { header: &#x27;Producto&#x27;, value: (i: Item) &#x3D;&gt; i.name },
+    { header: &#x27;Categoría&#x27;, value: (i: Item) &#x3D;&gt; i.category },
+    { header: &#x27;Stock&#x27;, value: (i: Item) &#x3D;&gt; i.stock },
+  ];
+
+  ionViewWillEnter(): void {
+    this.load();
+  }
+
+  protected load(): void {
+    this.loading.set(true);
+    this.error.set(null);
+    forkJoin({ report: this.api.getReport(), items: this.api.getItems() }).subscribe({
+      next: ({ report, items }) &#x3D;&gt; {
+        this.report.set(report);
+        this.items.set(items);
+        this.loading.set(false);
+      },
+      error: () &#x3D;&gt; {
+        this.error.set(&#x27;No se pudo cargar el informe. Inténtalo de nuevo.&#x27;);
+        this.loading.set(false);
+      },
+    });
+  }
+
+  protected exportCsv(): void {
+    this.exporter.downloadCsv(&#x27;informe-stock.csv&#x27;, this.exportColumns, this.items());
+  }
+
+  protected exportPdf(): void {
+    void this.exporter.downloadPdf(&#x27;informe-stock.pdf&#x27;, &#x27;Informe de stock&#x27;, this.exportColumns, this.items());
+  }
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="styleData">
+            <pre class="line-numbers"><code class="language-scss">
+    .center { text-align: center; padding: 24px; }
+    .stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header [translucent]="true">  <ion-toolbar>    <ion-buttons slot="start"><ion-menu-button aria-label="Abrir menú"></ion-menu-button></ion-buttons>    <ion-title>Informes</ion-title>  </ion-toolbar></ion-header><ion-content [fullscreen]="true" class="ion-padding">  @if (loading()) {    <div class="center" role="status"><ion-spinner name="crescent"></ion-spinner> Cargando informe…</div>  } @else if (error()) {    <div class="center" role="alert">      <p>{{ error() }}</p>      <ion-button (click)="load()">Reintentar</ion-button>    </div>  } @else if (report(); as r) {    <section class="stats" aria-label="Resumen">      <app-stat-card label="Productos" [value]="r.totalItems" icon="cube-outline" />      <app-stat-card label="Unidades en stock" [value]="r.totalStock" icon="stats-chart-outline" />      <app-stat-card label="Sin stock" [value]="r.outOfStock.length" icon="warning-outline"                     [tone]="r.outOfStock.length ? \'danger\' : \'success\'"                     [hint]="r.outOfStock.join(\', \')" />    </section>    <ion-card>      <ion-card-header><ion-card-title>Stock por categoría</ion-card-title></ion-card-header>      <ion-card-content>        <app-chart type="bar" [labels]="labels()" [series]="series()"                   ariaLabel="Gráfico de barras con las unidades en stock por categoría"                   [summary]="summary()" />      </ion-card-content>    </ion-card>    <ion-card>      <ion-card-content>        <div class="buttons">          <ion-button fill="outline" (click)="exportCsv()">Exportar CSV</ion-button>          <ion-button fill="outline" (click)="exportPdf()">Exportar PDF</ion-button>        </div>        <app-data-table caption="Detalle de productos" rowKey="id" [pageSize]="6"                        [columns]="columns" [rows]="items()" />      </ion-card-content>    </ion-card>  }</ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChartComponent', 'selector': 'app-chart'},{'name': 'DashboardPage', 'selector': 'app-dashboard'},{'name': 'DataTableComponent', 'selector': 'app-data-table'},{'name': 'ForbiddenPage', 'selector': 'app-forbidden'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'ItemFormPage', 'selector': 'app-item-form'},{'name': 'ItemsPage', 'selector': 'app-items'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'ReportsPage', 'selector': 'app-reports'},{'name': 'StatCardComponent', 'selector': 'app-stat-card'}];
+    var DIRECTIVES = [{'name': 'HasPermissionDirective', 'selector': '[appHasPermission]'},{'name': 'HasRoleDirective', 'selector': '[appHasRole]'}];
+    var ACTUAL_COMPONENT = {'name': 'ReportsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ReportsPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
