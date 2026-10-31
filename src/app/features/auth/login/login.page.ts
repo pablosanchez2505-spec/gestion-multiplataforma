@@ -1,10 +1,12 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
   IonContent, IonHeader, IonTitle, IonToolbar,
-  IonInput, IonButton, IonText, IonSpinner,
+  IonInput, IonButton, IonText, IonSpinner, IonChip, IonLabel,
 } from '@ionic/angular';
+import { ActivityService } from '../../../core/data/activity.service';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -15,15 +17,30 @@ import { AuthService } from '../../../core/services/auth.service';
   imports: [
     ReactiveFormsModule,
     IonContent, IonHeader, IonTitle, IonToolbar,
-    IonInput, IonButton, IonText, IonSpinner,
+    IonInput, IonButton, IonText, IonSpinner, IonChip, IonLabel,
   ],
 })
 export class LoginPage {
   private readonly fb = inject(FormBuilder);
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly activity = inject(ActivityService);
+
+  /** ?returnUrl=/ruta que puso el guard al bloquear el acceso (withComponentInputBinding). */
+  readonly returnUrl = input<string>();
 
   readonly loading = signal(false);
+
+  /**
+   * Usuarios de prueba del backend simulado. Solo se rellena el correo: las
+   * contraseñas no están en el código (el backend guarda su hash), se entregan
+   * aparte en el documento de entrega.
+   */
+  readonly demoUsers = [
+    { label: 'Admin', email: 'admin@demo.com' },
+    { label: 'Supervisor', email: 'supervisor@demo.com' },
+    { label: 'Usuario', email: 'usuario@demo.com' },
+  ];
   readonly errorMessage = signal<string | null>(null);
 
   readonly form = this.fb.nonNullable.group({
@@ -46,14 +63,26 @@ export class LoginPage {
     const { email, password } = this.form.getRawValue();
 
     this.auth.login(email, password).subscribe({
-      next: ({ user }) => {
+      next: user => {
         this.loading.set(false);
-        this.router.navigateByUrl(user.role === 'admin' ? '/admin' : '/home');
+        this.activity.log('login', 'Inició sesión');
+        // Vuelve a donde quería ir; si no, a la pantalla de inicio de su rol
+        this.router.navigateByUrl(this.safeReturnUrl() ?? this.auth.homeFor(user.role));
       },
-      error: (err: Error) => {
+      error: (err: HttpErrorResponse) => {
         this.loading.set(false);
-        this.errorMessage.set(err.message);
+        this.errorMessage.set(err.error?.message ?? 'No se pudo iniciar sesión');
       },
     });
+  }
+
+  fillDemo(email: string): void {
+    this.form.patchValue({ email });
+  }
+
+  /** Solo rutas internas: evita redirecciones abiertas (?returnUrl=https://otro-sitio). */
+  private safeReturnUrl(): string | null {
+    const url = this.returnUrl();
+    return url && url.startsWith('/') && !url.startsWith('//') && !url.startsWith('/login') ? url : null;
   }
 }
