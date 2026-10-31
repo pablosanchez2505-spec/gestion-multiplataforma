@@ -1,0 +1,66 @@
+<ion-app>
+  <a class="skip-link" href="#main-content" (click)="skipToContent($event)">Saltar al contenido</a>
+  <ion-split-pane contentId="main-content">
+    @if (auth.isLoggedIn()) {
+      <ion-menu contentId="main-content" type="overlay">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Gestión</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-note class="ion-padding">
+            {{ auth.user()?.name }}
+            <ion-badge color="medium">{{ roleLabel() }}</ion-badge>
+          </ion-note>
+          <ion-list lines="none">
+            <ion-menu-toggle auto-hide="false">
+              <ion-item routerLink="/home" routerLinkActive="selected" button detail="false">
+                <ion-icon slot="start" name="home-outline" aria-hidden="true"></ion-icon>
+                <ion-label>Inicio</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+
+            <ion-menu-toggle auto-hide="false">
+              <ion-item routerLink="/productos" routerLinkActive="selected" button detail="false">
+                <ion-icon slot="start" name="cube-outline" aria-hidden="true"></ion-icon>
+                <ion-label>Productos</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+
+            <ion-menu-toggle auto-hide="false">
+              <ion-item routerLink="/perfil" routerLinkActive="selected" button detail="false">
+                <ion-icon slot="start" name="person-circle-outline" aria-hidden="true"></ion-icon>
+                <ion-label>Mi perfil</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+
+            <!-- Solo supervisor y admin: el enlace ni se crea para 'user' -->
+            <ion-menu-toggle auto-hide="false" *appHasRole="['supervisor', 'admin']">
+              <ion-item routerLink="/informes" routerLinkActive="selected" button detail="false">
+                <ion-icon slot="start" name="document-text-outline" aria-hidden="true"></ion-icon>
+                <ion-label>Informes</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+
+            <!-- Solo admin -->
+            <ion-menu-toggle auto-hide="false" *appHasRole="'admin'">
+              <ion-item routerLink="/admin" routerLinkActive="selected" button detail="false">
+                <ion-icon slot="start" name="stats-chart-outline" aria-hidden="true"></ion-icon>
+                <ion-label>Administración</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+
+            <ion-menu-toggle auto-hide="false">
+              <ion-item (click)="logout()" button detail="false">
+                <ion-icon slot="start" name="log-out-outline" aria-hidden="true"></ion-icon>
+                <ion-label>Cerrar sesión</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+    }
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
